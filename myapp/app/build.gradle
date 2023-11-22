@@ -5,28 +5,17 @@
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.4/userguide/building_java_projects.html in the Gradle documentation.
  */
 
-// Gradle 빌드 도구가 사용할 플러그인
 plugins {
-    // 자바 애플리케이션을 생성하는 플러그인
-    // 이 플러그인을 추가하면 'java'플러그인이 자동으로 추가
-    // 따로 'java'플러그인 추가할 필요 없음
-    // id 'application' // java + 실행과 관련된 task
-
-    id 'application' // java plugin
-
-    // Eclipse IDE 관련 작업을 수행할 수 있는 플러그인
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
     id 'eclipse'
 }
 
-// 이 프로젝트에서 사용할 외부 라이브러리를 제공하는 서버를 설정
 repositories {
     // Use Maven Central for resolving dependencies.
-    mavenCentral() // Maven에서 제공하는 라이브러리 서버
+    mavenCentral()
 }
 
-// 이 프로젝트에서 사용할 외부 라이브러리를 지정
-// 다운로드할 외부 라이브러리 지정
-// 빌드할 때 라이브러리를 자동 다운로드
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
@@ -34,28 +23,24 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // This dependency is used by the application.
-    // 구글이 만든 라이브러리 , 개발할때 많이 사용함
     implementation 'com.google.guava:guava:32.1.1-jre'
 }
 
-// 소스 파일의 버전 설정
+// Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
-// 'application' 플러그인과 관련된 설정
-
 application {
-    // 'run'명령을 수행할 때 실행시킬 클래스명 지정
-    mainClass = 'com.eomcs.App'
+    // Define the main class for the application.
+    mainClass = 'bitcamp.myapp.App'
 }
 
-// unit test때 사용할 설정
 tasks.named('test') {
-    // unit test를 수핼할 때 사용할 도구 지정
-    useJUnitPlatform() // junit
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
 }
 
 // 컴파일 적용 옵션 설정
@@ -69,7 +54,7 @@ tasks.withType( JavaCompile ).configureEach
 // eclipse에서만 사용하는 설정
 eclipse {
     project {
-        name = "java-basic"
+        name = "myapp"
     }
     jdt {
       sourceCompatibility = 17 // compile에 사용할 jdk 버전 설정
