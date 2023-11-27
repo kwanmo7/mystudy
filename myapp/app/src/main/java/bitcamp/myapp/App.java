@@ -7,6 +7,7 @@ public class App {
   // 콘솔 출력 텍스트 빨간색으로 변경
   public static final String FONT_RED = "\033[0;31m";
   // 폰트 볼드&RED
+  // final - 값의 변경 불가 , 한번 선언한 값만 사용
   public static final String FONT_BOLD_RED = "\033[1;31m";
 
   // \u001B = \033 같은 값
