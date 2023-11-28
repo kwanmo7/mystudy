@@ -1,5 +1,6 @@
 package bitcamp.myapp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -16,7 +17,8 @@ public class App {
   public static void main(String[] args) {
     // 콘솔 로그 출력 & 폰트 및 색상 변경
     print_color_font();
-    test();
+    loop();
+    //test();
   }
 
   static void print_color_font() {
@@ -43,5 +45,42 @@ public class App {
     System.out.println(input);
     // scanner 사용 종료시 close로 닫아줘야함
     scanner.close();
+  }
+
+  static void loop() {
+    // 배열의 경우 아래와 같이 다양하게 선언가능
+    String[] strA = new String[3];
+    String[] strB = {"aa", "bb", "cc"};
+    String[] strC;
+    strC = new String[]{"aaa", "bbb"};
+
+    ArrayList arrA = new ArrayList();
+    ArrayList<String> arrB = new ArrayList<String>();
+    arrA.add("aa");
+    arrA.add(1);
+    arrA.add(3.3);
+    arrA.add(true);
+
+    arrB.add("aa");
+    arrB.add("bb");
+
+    for (String output : strA) {
+      System.out.println(output);
+    }
+    for (int i = 0; i < strB.length; i++) {
+      System.out.println(strB[i]);
+    }
+
+    loop1:
+    while (true) {
+      while (true) {
+        System.out.println(strC[1]);
+        break loop1; // 이중 반복문을 한번에 벗어날 수 있음
+      }
+    }
+
+    for (int i = 0; i < arrA.size(); i++) {
+      System.out.println(arrA.get(i));
+    }
   }
 }
