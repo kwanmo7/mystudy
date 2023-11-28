@@ -55,7 +55,7 @@ public class App {
     strC = new String[]{"aaa", "bbb"};
 
     ArrayList arrA = new ArrayList();
-    ArrayList<String> arrB = new ArrayList<String>();
+    ArrayList<String> arrB = new ArrayList<>();
     arrA.add("aa");
     arrA.add(1);
     arrA.add(3.3);
