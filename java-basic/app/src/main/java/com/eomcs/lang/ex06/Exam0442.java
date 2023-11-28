@@ -10,6 +10,5 @@ public class Exam0442 {
     for (int i = 0; i < names.length; i += 2) {
       System.out.println(names[i]);
     }
-
   }
 }

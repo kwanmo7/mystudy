@@ -1,5 +1,7 @@
 package bitcamp.myapp;
 
+import java.util.Scanner;
+
 public class App {
 
   // 콘솔 출력 텍스트 색상 기본으로 변경
@@ -14,6 +16,7 @@ public class App {
   public static void main(String[] args) {
     // 콘솔 로그 출력 & 폰트 및 색상 변경
     print_color_font();
+    test();
   }
 
   static void print_color_font() {
@@ -29,5 +32,16 @@ public class App {
     System.out.println(menu3);
     System.out.println(FONT_RED + menu4 + RESET);
     System.out.println("-------------------------------");
+  }
+
+  static void test() {
+    // scanner - 키보드 입력 받기
+    Scanner scanner = new Scanner(System.in);
+    // 키보드에서 입력 받는 값을 String 형태의 input에 저장
+    String input = scanner.nextLine();
+    // 출력
+    System.out.println(input);
+    // scanner 사용 종료시 close로 닫아줘야함
+    scanner.close();
   }
 }
