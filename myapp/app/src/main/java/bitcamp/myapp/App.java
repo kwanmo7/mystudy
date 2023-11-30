@@ -28,10 +28,10 @@ public class App {
     // Menu 출력
     printMenu();
     // while / if
-    UseWhileIf(keyin);
+    useWhileIf(keyin);
 
     // while / switch
-    UseWhileSwitch(keyin);
+    useWhileSwitch(keyin);
 
     // 콘솔 로그 출력 & 폰트 및 색상 변경 , scanner로 입력 받고 if문 , switch문으로 처리
     //print_color_font();
@@ -50,7 +50,7 @@ public class App {
     return keyin.nextLine();
   }
 
-  static void UseWhileIf(Scanner keyin) {
+  static void useWhileIf(Scanner keyin) {
     while (true) {
       String strInput = prompt(keyin);
       // compareTo - ()안에 문자와 비교 모두 같은 경우 0을 리턴 , 다른경우 다른 갯수만큼의 숫자를 리턴
@@ -73,7 +73,7 @@ public class App {
     }
   }
 
-  static void UseWhileSwitch(Scanner keyin) {
+  static void useWhileSwitch(Scanner keyin) {
     loop1:
     while (true) {
       String strInput = prompt(keyin);
