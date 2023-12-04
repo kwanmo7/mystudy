@@ -1,40 +1,11 @@
-package com.eomcs.oop.ex02;
+package com.eomcs.oop.ex02.step04;
 
 // # 관련된 기능(메서드)을 묶어 분류하기
 // 1) 분류 전
 // 2) 메서드를 클래스로 묶어 분류하기
 // 3) 클래스 변수 도입
-// 4) 클래스 변수의 한계 확인
-// 
-public class Exam0240 {
-
-  static class Calculator {
-
-    // 클래스 변수는 클래스가 로딩될 때 한 번 생성된다.
-    static int result = 0;
-
-    static void plus(int value) {
-      result += value; // result = result + value
-    }
-
-    static void minus(int value) {
-      result -= value; // result = result - value
-    }
-
-    static void multiple(int value) {
-      result *= value; // result = result * value
-    }
-
-    static void divide(int value) {
-      result /= value; // result = result / value
-    }
-
-    // 인스턴스를 사용하지 않는 메서드라면 그냥 클래스 메서드로 두어라.
-    static int abs(int a) {
-      return a >= 0 ? a : a * -1;
-    }
-  }
-
+//
+public class App {
   public static void main(String[] args) {
 
     // 다음 두 개의 식을 분리하여 계산해 보자!
@@ -44,7 +15,11 @@ public class Exam0240 {
 
     // 클래스 변수는 오직 한 개만 존재하기 때문에
     // 여러 개의 작업을 동시에 진행할 수 없다.
-    // 한 개의 식을 계산한 후에 다른 식을 계산해야 한다.
+    // 한 개의 식을 계산한 후에 다른 식을 순차적으로 계산해야 한다.
+
+    // 계산 결과를 보관할 변수는 더이상 필요가 없다.
+    // Calculator 내부에서 계산 결과를 관리한다.
+    // int result = 0;
 
     // 식1 계산:
     Calculator.plus(2); // + 2
