@@ -1,6 +1,6 @@
 package bitcamp.myapp;
 
-import java.util.Scanner;
+import bitcamp.myapp.vo.Bulletin;
 
 public class BoardMenu {
 
@@ -19,29 +19,54 @@ public class BoardMenu {
     }
   }
 
-  static void execute(Scanner keyin) {
+  static void execute(Bulletin stBul) {
     printMenu();
     loopBoard:
     while (true) {
-      String strInput = Prompt.promptBoard(keyin);
+      String strInput = Prompt.input("메인/게시글> ");
       switch (strInput) {
         case "1":
-          System.out.println("게시글 등록입니다.");
+          Prompt.addBulletin(stBul);
           break;
         case "2":
-          System.out.println("게시글 조회입니다.");
+          view(stBul);
           break;
         case "3":
-          System.out.println("게시글 변경입니다.");
+          modify(stBul);
           break;
         case "4":
-          System.out.println("게시글 삭제입니다.");
+          delete(stBul);
           break;
         case "0":
           break loopBoard;
+        case "menu":
+          printMenu();
+          break;
         default:
           System.out.println("메뉴 번호가 옳지 않습니다.");
       }
     }
+  }
+
+  static void view(Bulletin stBul) {
+    System.out.println("게시글 조회:");
+    System.out.printf("제목: %s\n", stBul.title);
+    System.out.printf("내용: %s\n", stBul.content);
+    System.out.printf("작성자: %s\n", stBul.writer);
+    System.out.printf("작성일: %s\n", stBul.date);
+  }
+
+  static void modify(Bulletin stBul) {
+    Prompt.modifyBulletin(stBul);
+    stBul.modifyBulletin(stBul);
+  }
+
+  static void delete(Bulletin stBul) {
+    System.out.println("게시글 삭제:");
+    stBul.title = "";
+    stBul.content = "";
+    stBul.writer = "";
+    stBul.date = "";
+    stBul.modifyBulletin(stBul);
   }
 }

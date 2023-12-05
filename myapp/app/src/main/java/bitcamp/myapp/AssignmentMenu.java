@@ -1,6 +1,6 @@
 package bitcamp.myapp;
 
-import java.util.Scanner;
+import bitcamp.myapp.vo.AssignmentVO;
 
 public class AssignmentMenu {
 
@@ -19,29 +19,52 @@ public class AssignmentMenu {
     }
   }
 
-  static void execute(Scanner keyin) {
+  static void execute(AssignmentVO stAss) {
     printmenu();
     loopBoard:
     while (true) {
-      String strInput = Prompt.promptReg(keyin);
+      String strInput = Prompt.input("메인/과제> ");
       switch (strInput) {
         case "1":
-          System.out.println("게시글 등록입니다.");
+          Prompt.addAssignment(stAss);
           break;
         case "2":
-          System.out.println("게시글 조회입니다.");
+          view(stAss);
           break;
         case "3":
-          System.out.println("게시글 변경입니다.");
+          modify(stAss);
           break;
         case "4":
-          System.out.println("게시글 삭제입니다.");
+          delete(stAss);
           break;
         case "0":
           break loopBoard;
+        case "menu":
+          printmenu();
+          break;
         default:
           System.out.println("메뉴 번호가 옳지 않습니다.");
       }
     }
+  }
+
+  static void view(AssignmentVO stAss) {
+    System.out.println("과제 조회:");
+    System.out.printf("과제명: %s\n", stAss.title);
+    System.out.printf("내용: %s\n", stAss.content);
+    System.out.printf("제출 마감일: %s\n", stAss.deadline);
+  }
+
+  static void modify(AssignmentVO stAss) {
+    Prompt.modifyAssignment(stAss);
+    stAss.modifyAssignment(stAss);
+  }
+
+  static void delete(AssignmentVO stAss) {
+    System.out.println("과제 삭제:");
+    stAss.title = "";
+    stAss.content = "";
+    stAss.deadline = "";
+    stAss.modifyAssignment(stAss);
   }
 }

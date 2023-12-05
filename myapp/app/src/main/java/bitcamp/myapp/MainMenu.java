@@ -1,6 +1,7 @@
 package bitcamp.myapp;
 
-import java.util.Scanner;
+import bitcamp.myapp.vo.AssignmentVO;
+import bitcamp.myapp.vo.Bulletin;
 
 public class MainMenu {
 
@@ -29,17 +30,19 @@ public class MainMenu {
     }
   }
 
-  static void execute(Scanner keyin) {
+  static void execute() {
     printMainMenu();
+    AssignmentVO stAss = new AssignmentVO();
+    Bulletin stBul = new Bulletin();
     loop1:
     while (true) {
-      String strInput = Prompt.promptMain(keyin);
+      String strInput = Prompt.input("메인> ");
       switch (strInput) {
         case "1":
-          AssignmentMenu.execute(keyin);
+          AssignmentMenu.execute(stAss);
           break;
         case "2":
-          BoardMenu.execute(keyin);
+          BoardMenu.execute(stBul);
           break;
         case "3":
           System.out.println("도움말입니다.");
