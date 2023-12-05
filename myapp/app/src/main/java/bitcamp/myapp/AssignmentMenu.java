@@ -41,9 +41,7 @@ public class AssignmentMenu {
 
   static void view(AssignmentVO stAss) {
     System.out.println("과제 조회:");
-    System.out.printf("과제명: %s\n", stAss.title);
-    System.out.printf("내용: %s\n", stAss.content);
-    System.out.printf("제출 마감일: %s\n", stAss.deadline);
+    stAss.printAssignment();
   }
 
   static void modify(AssignmentVO stAss) {

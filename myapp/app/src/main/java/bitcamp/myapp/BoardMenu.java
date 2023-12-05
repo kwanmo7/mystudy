@@ -41,10 +41,7 @@ public class BoardMenu {
 
   static void view(BulletinVO stBul) {
     System.out.println("게시글 조회:");
-    System.out.printf("제목: %s\n", stBul.title);
-    System.out.printf("내용: %s\n", stBul.content);
-    System.out.printf("작성자: %s\n", stBul.writer);
-    System.out.printf("작성일: %s\n", stBul.date);
+    stBul.printBulletin();
   }
 
   static void modify(BulletinVO stBul) {

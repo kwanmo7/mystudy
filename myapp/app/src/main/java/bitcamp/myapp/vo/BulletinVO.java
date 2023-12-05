@@ -13,6 +13,13 @@ public class BulletinVO {
     this.writer = stBul.writer;
     this.date = stBul.date;
   }
+  public void printBulletin(){
+    System.out.printf("제목: %s\n", this.title);
+    System.out.printf("내용: %s\n", this.content);
+    System.out.printf("작성자: %s\n", this.writer);
+    System.out.printf("작성일: %s\n", this.date);
+  }
+
   public void delete(){
     this.title = "";
     this.content = "";
