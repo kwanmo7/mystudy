@@ -1,7 +1,7 @@
 package bitcamp.myapp;
 
 import bitcamp.myapp.vo.AssignmentVO;
-import bitcamp.myapp.vo.Bulletin;
+import bitcamp.myapp.vo.BulletinVO;
 import java.util.Scanner;
 
 public class Prompt {
@@ -31,7 +31,7 @@ public class Prompt {
     stAss.deadline = Prompt.input("제출 마감일(%s)? ", stAss.deadline);
   }
 
-  static void addBulletin(Bulletin stBul) {
+  static void addBulletin(BulletinVO stBul) {
     System.out.println("게시글 등록:");
     stBul.title = input("제목? ");
     stBul.content = input("내용? ");
@@ -39,7 +39,7 @@ public class Prompt {
     stBul.date = input("작성일? ");
   }
 
-  static void modifyBulletin(Bulletin stBul) {
+  static void modifyBulletin(BulletinVO stBul) {
     System.out.println("게시글 변경:");
     stBul.title = input("제목(%s)? \n", stBul.title);
     stBul.content = input("내용(%s)? \n", stBul.content);

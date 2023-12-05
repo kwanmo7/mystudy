@@ -1,6 +1,7 @@
 # etc
 *.exe
 temp/
+*workspace.xml
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode,eclipse,intellij,java,c++,c,node,gradle,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,visualstudiocode,eclipse,intellij,java,c++,c,node,gradle,maven
@@ -154,6 +155,7 @@ local.properties
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/workspace.xml
 
 # AWS User-specific
 .idea/**/aws.xml

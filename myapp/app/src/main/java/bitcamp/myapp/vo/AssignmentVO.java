@@ -11,4 +11,10 @@ public class AssignmentVO {
     this.content = stAss.content;
     this.deadline = stAss.deadline;
   }
+  public void delete(){
+    this.title = "";
+    this.content = "";
+    this.deadline = "";
+  }
+
 }

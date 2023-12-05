@@ -1,20 +1,11 @@
 package bitcamp.myapp;
 
 import bitcamp.myapp.vo.AssignmentVO;
+import bitcamp.myapp.vo.ConstVO;
 
 public class AssignmentMenu {
-
-  public static final String[] ASS_MENU = {
-      "[" + MainMenu.FONT_RED + "과제" + MainMenu.RESET + "]",
-      "1. 등록",
-      "2. 조회",
-      "3. 변경",
-      "4. 삭제",
-      "0. 이전"
-  };
-
   static void printmenu() {
-    for (String menus : ASS_MENU) {
+    for (String menus : ConstVO.ASSIGNMENT_MENU) {
       System.out.println(menus);
     }
   }
@@ -62,9 +53,6 @@ public class AssignmentMenu {
 
   static void delete(AssignmentVO stAss) {
     System.out.println("과제 삭제:");
-    stAss.title = "";
-    stAss.content = "";
-    stAss.deadline = "";
-    stAss.modifyAssignment(stAss);
+    stAss.delete();
   }
 }

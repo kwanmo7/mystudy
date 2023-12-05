@@ -1,25 +1,16 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.vo.Bulletin;
+import bitcamp.myapp.vo.BulletinVO;
+import bitcamp.myapp.vo.ConstVO;
 
 public class BoardMenu {
-
-  public static final String[] BOARD_MENU = {
-      "[" + MainMenu.FONT_RED + "게시글" + MainMenu.RESET + "]",
-      "1. 등록",
-      "2. 조회",
-      "3. 변경",
-      "4. 삭제",
-      "0. 이전"
-  };
-
   static void printMenu() {
-    for (String menus : BOARD_MENU) {
+    for (String menus : ConstVO.BOARD_MENU) {
       System.out.println(menus);
     }
   }
 
-  static void execute(Bulletin stBul) {
+  static void execute(BulletinVO stBul) {
     printMenu();
     loopBoard:
     while (true) {
@@ -48,7 +39,7 @@ public class BoardMenu {
     }
   }
 
-  static void view(Bulletin stBul) {
+  static void view(BulletinVO stBul) {
     System.out.println("게시글 조회:");
     System.out.printf("제목: %s\n", stBul.title);
     System.out.printf("내용: %s\n", stBul.content);
@@ -56,17 +47,13 @@ public class BoardMenu {
     System.out.printf("작성일: %s\n", stBul.date);
   }
 
-  static void modify(Bulletin stBul) {
+  static void modify(BulletinVO stBul) {
     Prompt.modifyBulletin(stBul);
     stBul.modifyBulletin(stBul);
   }
 
-  static void delete(Bulletin stBul) {
+  static void delete(BulletinVO stBul) {
     System.out.println("게시글 삭제:");
-    stBul.title = "";
-    stBul.content = "";
-    stBul.writer = "";
-    stBul.date = "";
-    stBul.modifyBulletin(stBul);
+    stBul.delete();
   }
 }
