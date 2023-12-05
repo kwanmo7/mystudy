@@ -13,6 +13,7 @@ public class BulletinVO {
     this.writer = stBul.writer;
     this.date = stBul.date;
   }
+  
   public void printBulletin(){
     System.out.printf("제목: %s\n", this.title);
     System.out.printf("내용: %s\n", this.content);
