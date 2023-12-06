@@ -4,6 +4,7 @@ import bitcamp.myapp.vo.BulletinVO;
 import bitcamp.myapp.vo.ConstVO;
 
 public class BoardMenu {
+
   static void printMenu() {
     for (String menus : ConstVO.BOARD_MENU) {
       System.out.println(menus);
@@ -40,7 +41,6 @@ public class BoardMenu {
   }
 
   static void view(BulletinVO stBul) {
-    System.out.println("게시글 조회:");
     stBul.printBulletin();
   }
 
@@ -50,7 +50,6 @@ public class BoardMenu {
   }
 
   static void delete(BulletinVO stBul) {
-    System.out.println("게시글 삭제:");
     stBul.delete();
   }
 }

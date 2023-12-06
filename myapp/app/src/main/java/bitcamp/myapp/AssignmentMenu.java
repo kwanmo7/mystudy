@@ -4,6 +4,7 @@ import bitcamp.myapp.vo.AssignmentVO;
 import bitcamp.myapp.vo.ConstVO;
 
 public class AssignmentMenu {
+
   static void printmenu() {
     for (String menus : ConstVO.ASSIGNMENT_MENU) {
       System.out.println(menus);
@@ -40,7 +41,6 @@ public class AssignmentMenu {
   }
 
   static void view(AssignmentVO stAss) {
-    System.out.println("과제 조회:");
     stAss.printAssignment();
   }
 
@@ -50,7 +50,6 @@ public class AssignmentMenu {
   }
 
   static void delete(AssignmentVO stAss) {
-    System.out.println("과제 삭제:");
     stAss.delete();
   }
 }

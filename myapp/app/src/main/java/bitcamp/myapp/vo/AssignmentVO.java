@@ -11,12 +11,16 @@ public class AssignmentVO {
     this.content = stAss.content;
     this.deadline = stAss.deadline;
   }
-  public void printAssignment(){
+
+  public void printAssignment() {
+    System.out.println("과제 조회:");
     System.out.printf("과제명: %s\n", this.title);
     System.out.printf("내용: %s\n", this.content);
     System.out.printf("제출 마감일: %s\n", this.deadline);
   }
-  public void delete(){
+
+  public void delete() {
+    System.out.println("과제 삭제:");
     this.title = "";
     this.content = "";
     this.deadline = "";
