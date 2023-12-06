@@ -1,10 +1,16 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.vo.*;
+import bitcamp.myapp.vo.AssignmentVO;
+import bitcamp.myapp.vo.BulletinVO;
+import bitcamp.myapp.vo.ConstVO;
+import bitcamp.myapp.vo.MemberVO;
 
 public class MainMenu {
-  static AssignmentVO stAss = new AssignmentVO();
-  static BulletinVO stBul = new BulletinVO();
+
+  static AssignmentVO[] stAss = new AssignmentVO[3];
+  static BulletinVO[] stBul = new BulletinVO[3];
+  static MemberVO[] stMem = new MemberVO[3];
+
   static void printMainMenu() {
     // Menu 출력
     for (String menus : ConstVO.MAIN_MENU) {
@@ -14,11 +20,10 @@ public class MainMenu {
 
   static void execute() {
     printMainMenu();
-//    AssignmentVO stAss = new AssignmentVO();
-//    BulletinVO stBul = new BulletinVO();
     loop1:
     while (true) {
       String strInput = Prompt.input("메인> ");
+      
       switch (strInput) {
         case "1":
           AssignmentMenu.execute(stAss);
@@ -27,9 +32,12 @@ public class MainMenu {
           BoardMenu.execute(stBul);
           break;
         case "3":
-          System.out.println("도움말입니다.");
+          MemberMenu.execute(stMem);
           break;
         case "4":
+          System.out.println("도움말입니다.");
+          break;
+        case "0":
           System.out.println("종료입니다.");
           break loop1;
         case "menu":

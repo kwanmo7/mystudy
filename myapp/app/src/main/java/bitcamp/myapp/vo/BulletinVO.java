@@ -7,26 +7,25 @@ public class BulletinVO {
   public String writer;
   public String date;
 
-  public void modifyBulletin(BulletinVO stBul) {
-    this.title = stBul.title;
-    this.content = stBul.content;
-    this.writer = stBul.writer;
-    this.date = stBul.date;
+  public static boolean checkForBoard() {
+    if (ConstVO.iBoardIndex == 0) {
+      return false;
+    }
+    return true;
   }
 
   public void printBulletin() {
-    System.out.println("게시글 조회:");
+    System.out.println("-----------------------------------------------------------------------");
     System.out.printf("제목: %s\n", this.title);
     System.out.printf("내용: %s\n", this.content);
     System.out.printf("작성자: %s\n", this.writer);
     System.out.printf("작성일: %s\n", this.date);
+    System.out.println("-----------------------------------------------------------------------");
   }
 
-  public void delete() {
-    System.out.println("게시글 삭제:");
-    this.title = "";
-    this.content = "";
-    this.writer = "";
-    this.date = "";
+  public void printBulletinList() {
+    System.out.println("-----------------------------------------------------------------------");
+    System.out.printf("%-20s\t%-20s\t%s\n", this.title, this.writer, this.date);
+    System.out.println("-----------------------------------------------------------------------");
   }
 }

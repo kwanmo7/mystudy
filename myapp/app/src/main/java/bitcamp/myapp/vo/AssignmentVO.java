@@ -6,24 +6,24 @@ public class AssignmentVO {
   public String content;
   public String deadline;
 
-  public void modifyAssignment(AssignmentVO stAss) {
-    this.title = stAss.title;
-    this.content = stAss.content;
-    this.deadline = stAss.deadline;
+  public static boolean checkForAss() {
+    if (ConstVO.iAssIndex == 0) {
+      return false;
+    }
+    return true;
   }
 
   public void printAssignment() {
-    System.out.println("과제 조회:");
+    System.out.println("-----------------------------------------------------------------------");
     System.out.printf("과제명: %s\n", this.title);
     System.out.printf("내용: %s\n", this.content);
     System.out.printf("제출 마감일: %s\n", this.deadline);
+    System.out.println("-----------------------------------------------------------------------");
   }
 
-  public void delete() {
-    System.out.println("과제 삭제:");
-    this.title = "";
-    this.content = "";
-    this.deadline = "";
+  public void printAssignmentlist() {
+    System.out.println("-----------------------------------------------------------------------");
+    System.out.printf("%-20s\t%s\n", this.title, this.deadline);
+    System.out.println("-----------------------------------------------------------------------");
   }
-
 }
