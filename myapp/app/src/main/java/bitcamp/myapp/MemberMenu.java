@@ -1,102 +1,129 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.vo.ConstVO;
-import bitcamp.myapp.vo.MemberVO;
-
 public class MemberMenu {
 
-  static void printMemberMenu() {
-    for (String menu : ConstVO.MEMBER_MENU) {
-      System.out.println(menu);
-    }
+  static Member[] members = new Member[3];
+  static int length = 0;
+
+  static void printMenu() {
+    System.out.println("[회원]");
+    System.out.println("1. 등록");
+    System.out.println("2. 조회");
+    System.out.println("3. 변경");
+    System.out.println("4. 삭제");
+    System.out.println("5. 목록");
+    System.out.println("0. 이전");
   }
 
-  static void execute(MemberVO[] stMem) {
-    printMemberMenu();
-    loopMember:
+  static void execute() {
+    printMenu();
     while (true) {
-      String strInput = Prompt.input("메인/회원> ");
-      switch (strInput) {
+      String input = Prompt.input("메인/회원> ");
+
+      switch (input) {
         case "1":
-          add(stMem);
+          add();
           break;
         case "2":
-          view(stMem);
+          view();
           break;
         case "3":
-          modify(stMem);
+          modify();
           break;
         case "4":
-          delete(stMem);
+          delete();
           break;
         case "5":
-          list(stMem);
+          list();
           break;
         case "0":
-          break loopMember;
+          return;
         case "menu":
-          printMemberMenu();
+          printMenu();
           break;
         default:
-          System.out.println("번호가 올바르지 않습니다.");
+          System.out.println("메뉴 번호가 옳지 않습니다!");
       }
     }
   }
 
-  static void add(MemberVO[] stMem) {
-    if (stMem.length == ConstVO.iMemberIndex) {
-      int iOldIndex = ConstVO.iMemberIndex;
-      int iNewIndex = iOldIndex + (iOldIndex / 2);
-      MemberVO[] stNewMem = new MemberVO[iNewIndex];
-      for (int i = 0; i < iOldIndex; i++) {
-        stNewMem[i] = stMem[i];
+  static void add() {
+    System.out.println("회원 등록:");
+
+    if (length == members.length) {
+      int oldSize = members.length;
+      int newSize = oldSize + (oldSize >> 1);
+
+      Member[] arr = new Member[newSize];
+      for (int i = 0; i < oldSize; i++) {
+        arr[i] = members[i];
       }
-      stMem = stNewMem;
+
+      members = arr;
     }
-    Prompt.addMember(stMem);
+
+    Member member = new Member();
+    member.email = Prompt.input("이메일? ");
+    member.name = Prompt.input("이름? ");
+    member.password = Prompt.input("암호? ");
+    member.createdDate = Prompt.input("가입일? ");
+
+    members[length++] = member;
   }
 
-  static void view(MemberVO[] stMem) {
-    System.out.println("회원 조회:");
-    if (!MemberVO.checkForMem()) {
-      System.out.println("등록된 회원이 없습니다.");
-      return;
-    }
-    int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index < 0 || index >= ConstVO.iMemberIndex) {
-      System.out.println("번호가 올바르지 않습니다.");
-      return;
-    }
-    stMem[index].printMember();
-  }
-
-  static void modify(MemberVO[] stMem) {
-    Prompt.modifyMember(stMem);
-  }
-
-  static void delete(MemberVO[] stMem) {
-    System.out.println("회원 삭제:");
-    if (!MemberVO.checkForMem()) {
-      System.out.println("등록된 회원이 없습니다.");
-      return;
-    }
-    int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index < 0 || index >= ConstVO.iMemberIndex) {
-      System.out.println("번호가 올바르지 않습니다.");
-      return;
-    }
-    for (int i = 0; i < (stMem.length - 1); i++) {
-      stMem[i] = stMem[i + 1];
-    }
-
-    stMem[--ConstVO.iMemberIndex] = null;
-  }
-
-  static void list(MemberVO[] stMem) {
+  static void list() {
     System.out.println("회원 목록:");
-    System.out.printf("%-20s\t%-20s\t%s\n", "이메일", "이름", "가입일");
-    for (int i = 0; i != ConstVO.iMemberIndex; i++) {
-      stMem[i].printMemberList();
+    System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
+
+    for (int i = 0; i < length; i++) {
+      Member member = members[i];
+      System.out.printf("%-10s\t%30s\t%s\n", member.name, member.email, member.createdDate);
     }
+  }
+
+  static void view() {
+    System.out.println("회원 조회:");
+
+    int index = Integer.parseInt(Prompt.input("번호? "));
+    if (index < 0 || index >= length) {
+      System.out.println("회원 번호가 유효하지 않습니다.");
+      return;
+    }
+
+    Member member = members[index];
+    System.out.printf("이메일: %s\n", member.email);
+    System.out.printf("이름: %s\n", member.name);
+    System.out.printf("가입일: %s\n", member.createdDate);
+  }
+
+  static void modify() {
+    System.out.println("회원 변경:");
+
+    int index = Integer.parseInt(Prompt.input("번호? "));
+    if (index < 0 || index >= length) {
+      System.out.println("회원 번호가 유효하지 않습니다.");
+      return;
+    }
+
+    Member member = members[index];
+    member.email = Prompt.input("이메일(%s)? ", member.email);
+    member.name = Prompt.input("이름(%s)? ", member.name);
+    member.password = Prompt.input("새 암호? ");
+    member.createdDate = Prompt.input("가입일(%s)? ", member.createdDate);
+  }
+
+  static void delete() {
+    System.out.println("회원 삭제:");
+
+    int index = Integer.parseInt(Prompt.input("번호? "));
+    if (index < 0 || index >= length) {
+      System.out.println("회원 번호가 유효하지 않습니다.");
+      return;
+    }
+
+    for (int i = index; i < (length - 1); i++) {
+      members[i] = members[i + 1];
+    }
+    members[--length] = null;
   }
 }

@@ -13,10 +13,11 @@ public class ConstVO {
       "1. 과제",
       "2. 게시글",
       "3. 회원",
-      "4. 도움말",
+      "4. 가입인사",
+      "5. 도움말",
       FONT_RED + "0. 종료" + RESET};
   public static final String[] BOARD_MENU = {
-      "[" + FONT_RED + "게시글" + RESET + "]",
+      "[" + FONT_RED + "[게시글]" + RESET + "]",
       "1. 등록",
       "2. 조회",
       "3. 변경",
@@ -25,7 +26,7 @@ public class ConstVO {
       "0. 이전"
   };
   public static final String[] ASSIGNMENT_MENU = {
-      "[" + FONT_RED + "과제" + RESET + "]",
+      "[" + FONT_RED + "[과제]" + RESET + "]",
       "1. 등록",
       "2. 조회",
       "3. 변경",
@@ -34,8 +35,17 @@ public class ConstVO {
       "0. 이전"
   };
   public static final String[] MEMBER_MENU = {
-      "[" + FONT_RED + "회원" + RESET + "]",
+      "[" + FONT_RED + "[회원]" + RESET + "]",
       "1. 입력",
+      "2. 조회",
+      "3. 변경",
+      "4. 삭제",
+      "5. 목록",
+      "0. 이전"
+  };
+  public static final String[] GREETING_BOARD_MENU = {
+      "[" + FONT_RED + "[가입인사]" + RESET + "]",
+      "1. 등록",
       "2. 조회",
       "3. 변경",
       "4. 삭제",
@@ -45,5 +55,6 @@ public class ConstVO {
   public static int iAssIndex = 0;
   public static int iBoardIndex = 0;
   public static int iMemberIndex = 0;
+  public static int iGreetingIndex = 0;
 
 }

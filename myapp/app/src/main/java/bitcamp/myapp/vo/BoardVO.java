@@ -1,6 +1,6 @@
 package bitcamp.myapp.vo;
 
-public class BulletinVO {
+public class BoardVO {
 
   public String title;
   public String content;
@@ -14,7 +14,7 @@ public class BulletinVO {
     return true;
   }
 
-  public void printBulletin() {
+  public void printBoard() {
     System.out.println("-----------------------------------------------------------------------");
     System.out.printf("제목: %s\n", this.title);
     System.out.printf("내용: %s\n", this.content);
@@ -23,7 +23,7 @@ public class BulletinVO {
     System.out.println("-----------------------------------------------------------------------");
   }
 
-  public void printBulletinList() {
+  public void printBoardList() {
     System.out.println("-----------------------------------------------------------------------");
     System.out.printf("%-20s\t%-20s\t%s\n", this.title, this.writer, this.date);
     System.out.println("-----------------------------------------------------------------------");
