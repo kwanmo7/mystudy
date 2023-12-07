@@ -1,7 +1,12 @@
-package bitcamp.myapp;
+package bitcamp.myapp.menu;
+
+import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.ConstVO;
+import bitcamp.util.Prompt;
 
 public class BoardMenu {
 
+  Prompt prompt;
   String title;
   Board[] boards = new Board[3];
   int length = 0;
@@ -9,24 +14,22 @@ public class BoardMenu {
   // BoardMenu 인스턴스를 생성할 때 반드시 게시판 제목을 설정하도록 강요한다.
   // 생성자란(constructor)?
   // => 인스턴스를 사용하기 전에 유효한 상태로 설정하는 작업을 수행하는 메서드
-  public BoardMenu(String title) {
+  public BoardMenu(String title, Prompt prompt) {
     this.title = title;
+    this.prompt = prompt;
   }
 
   void printMenu() {
     System.out.printf("[%s]\n", this.title);
-    System.out.println("1. 등록");
-    System.out.println("2. 조회");
-    System.out.println("3. 변경");
-    System.out.println("4. 삭제");
-    System.out.println("5. 목록");
-    System.out.println("0. 이전");
+    for (String menu : ConstVO.BOARD_MENU) {
+      System.out.println(menu);
+    }
   }
 
-  void execute() {
+  public void execute() {
     this.printMenu();
     while (true) {
-      String input = Prompt.input("메인/%s> ", this.title);
+      String input = this.prompt.input("메인/%s> ", this.title);
 
       switch (input) {
         case "1":
@@ -71,10 +74,10 @@ public class BoardMenu {
     }
 
     Board board = new Board();
-    board.title = Prompt.input("제목? ");
-    board.content = Prompt.input("내용? ");
-    board.writer = Prompt.input("작성자? ");
-    board.createdDate = Prompt.input("작성일? ");
+    board.title = this.prompt.input("제목? ");
+    board.content = this.prompt.input("내용? ");
+    board.writer = this.prompt.input("작성자? ");
+    board.createdDate = this.prompt.input("작성일? ");
 
     this.boards[this.length++] = board;
   }
@@ -92,7 +95,7 @@ public class BoardMenu {
   void view() {
     System.out.println("게시글 조회:");
 
-    int index = Integer.parseInt(Prompt.input("번호? "));
+    int index = this.prompt.inputInt("번호? ");
     if (index < 0 || index >= this.length) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;
@@ -108,23 +111,23 @@ public class BoardMenu {
   void modify() {
     System.out.println("게시글 변경:");
 
-    int index = Integer.parseInt(Prompt.input("번호? "));
+    int index = this.prompt.inputInt("번호? ");
     if (index < 0 || index >= this.length) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;
     }
 
     Board board = this.boards[index];
-    board.title = Prompt.input("제목(%s)? ", board.title);
-    board.content = Prompt.input("내용(%s)? ", board.content);
-    board.writer = Prompt.input("작성자(%s)? ", board.writer);
-    board.createdDate = Prompt.input("작성일(%s)? ", board.createdDate);
+    board.title = this.prompt.input("제목(%s)? ", board.title);
+    board.content = this.prompt.input("내용(%s)? ", board.content);
+    board.writer = this.prompt.input("작성자(%s)? ", board.writer);
+    board.createdDate = this.prompt.input("작성일(%s)? ", board.createdDate);
   }
 
   void delete() {
     System.out.println("게시글 삭제:");
 
-    int index = Integer.parseInt(Prompt.input("번호? "));
+    int index = this.prompt.inputInt("번호? ");
     if (index < 0 || index >= this.length) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;
