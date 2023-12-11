@@ -1,9 +1,10 @@
 package bitcamp.myapp.menu;
 
+import bitcamp.menu.Menu;
 import bitcamp.myapp.vo.ConstVO;
 import bitcamp.util.Prompt;
 
-public class MainMenu {
+public class MainMenu implements Menu {
 
   Prompt prompt;
 
@@ -17,11 +18,17 @@ public class MainMenu {
     }
   }
 
-  public void execute() {
-    AssignmentMenu assignmentMenu = new AssignmentMenu("과제", this.prompt);
-    BoardMenu boardMenu = new BoardMenu("게시판", this.prompt);
-    BoardMenu greetingMenu = new BoardMenu("가입인사", this.prompt);
-    MemberMenu memberMenu = new MemberMenu("회원", this.prompt);
+  @Override
+  public String getTitle() {
+    return null;
+  }
+
+  public void execute(Prompt prompt) {
+    Menu assignmentMenu = new AssignmentMenu("과제", this.prompt);
+    Menu boardMenu = new BoardMenu("게시판", this.prompt);
+    Menu greetingMenu = new BoardMenu("가입인사", this.prompt);
+    Menu memberMenu = new MemberMenu("회원", this.prompt);
+    Menu helpMenu = new HelpMenu("도움말", this.prompt);
 
     printMenu();
 
@@ -30,19 +37,19 @@ public class MainMenu {
 
       switch (input) {
         case "1":
-          assignmentMenu.execute();
+          assignmentMenu.execute(prompt);
           break;
         case "2":
-          boardMenu.execute();
+          boardMenu.execute(prompt);
           break;
         case "3":
-          memberMenu.execute();
+          memberMenu.execute(prompt);
           break;
         case "4":
-          greetingMenu.execute();
+          greetingMenu.execute(prompt);
           break;
         case "5":
-          System.out.println("도움말입니다.");
+          helpMenu.execute(prompt);
           break;
         case "0":
           System.out.println("종료합니다.");

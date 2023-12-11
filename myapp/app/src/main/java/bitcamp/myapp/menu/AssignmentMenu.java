@@ -1,10 +1,11 @@
 package bitcamp.myapp.menu;
 
+import bitcamp.menu.Menu;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.ConstVO;
 import bitcamp.util.Prompt;
 
-public class AssignmentMenu {
+public class AssignmentMenu implements Menu {
 
   // 의존 객체(Dependency Object) ==> dependency
   // - 클래스가 작업을 수행할 때 사용하는 객체
@@ -25,7 +26,12 @@ public class AssignmentMenu {
     }
   }
 
-  public void execute() {
+  @Override
+  public String getTitle() {
+    return null;
+  }
+
+  public void execute(Prompt prompt) {
     this.printMenu();
 
     while (true) {
