@@ -5,13 +5,13 @@ import bitcamp.util.AnsiEscape;
 public class ConstVO {
 
   public static final String[] MAIN_MENU = {
-      AnsiEscape.FONT_BOLD_RED + "[과제관리 시스템]" + AnsiEscape.RESET,
+      AnsiEscape.ANSI_BOLD_RED + "[과제관리 시스템]" + AnsiEscape.RESET,
       "1. 과제",
       "2. 게시글",
       "3. 회원",
       "4. 가입인사",
       "5. 도움말",
-      AnsiEscape.FONT_RED + "0. 종료" + AnsiEscape.RESET};
+      AnsiEscape.ANSI_RED + "0. 종료" + AnsiEscape.RESET};
   public static final String[] BOARD_MENU = {
       "1. 등록",
       "2. 조회",
