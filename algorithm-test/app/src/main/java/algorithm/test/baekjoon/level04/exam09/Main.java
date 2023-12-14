@@ -14,11 +14,12 @@ public class Main {
     for (int i = 0; i < b; i++) {
       int c = scanner.nextInt();
       int d = scanner.nextInt();
-      int e = d - c;
-      for (int j = c - 1; j < e; j++) {
+      int k = d - 1;
+      for (int j = c - 1; j < k; j++) {
         int temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
+        arr[j] = arr[k];
+        arr[k] = temp;
+        k--;
       }
     }
     for (int i = 0; i < arr.length; i++) {
