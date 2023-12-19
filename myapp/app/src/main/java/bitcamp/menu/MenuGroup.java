@@ -4,21 +4,20 @@ import bitcamp.util.Prompt;
 
 // Composite 패턴에서 '복합 객체(Composite Object)'역할을 하는 클래스
 // - 다른 Menu 객체를 포함한다.
-public class MenuGroup implements Menu {
+public class MenuGroup extends AbstractMenu {
 
-  String title;
-  Menu[] menus = new Menu[10];
-  int menuSize;
+  private Menu[] menus = new Menu[10];
+  private int menuSize;
 
   public MenuGroup(String title) {
-    this.title = title;
+    super(title);
   }
 
   @Override // 인터페이스나 슈퍼 클래스의 메소드를 정의하겠다고 컴파일러에게 알림
   public void execute(Prompt prompt) {
     this.printMenu();
     while (true) {
-      String input = prompt.input("%s> ", this.title);
+      String input = prompt.input("%s> ", this.getTitle());
 
       if (input.equals("menu")) {
         this.printMenu();
@@ -37,16 +36,11 @@ public class MenuGroup implements Menu {
   }
 
   private void printMenu() {
-    System.out.printf("[%s]\n", this.title);
+    System.out.printf("[%s]\n", this.getTitle());
     for (int i = 0; i < this.menuSize; i++) {
       System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());
     }
     System.out.printf("0. %s\n", "이전");
-  }
-
-  @Override
-  public String getTitle() {
-    return this.title;
   }
 
   public void add(Menu menu) {

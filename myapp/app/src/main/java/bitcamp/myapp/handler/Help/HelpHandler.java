@@ -1,22 +1,16 @@
 package bitcamp.myapp.handler.Help;
 
-import bitcamp.menu.Menu;
-import bitcamp.menu.MenuHandler;
-import bitcamp.util.AnsiEscape;
+import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.util.Prompt;
 
-public class HelpHandler implements MenuHandler {
+public class HelpHandler extends AbstractMenuHandler {
 
-  String title;
-  Prompt prompt;
-
-  public HelpHandler(String title) {
-    this.title = title;
+  public HelpHandler(Prompt prompt) {
+    super(prompt);
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.RESET, menu.getTitle());
-    System.out.printf("%s", this.title);
+  protected void action() {
+    System.out.println("도움말입니다.");
   }
 }
