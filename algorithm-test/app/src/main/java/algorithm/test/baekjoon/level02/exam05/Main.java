@@ -19,5 +19,6 @@ public class Main {
       }
     }
     System.out.printf("%s %s", H, M);
+    scanner.close();
   }
 }

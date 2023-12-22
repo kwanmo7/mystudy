@@ -29,7 +29,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -57,9 +57,9 @@ eclipse {
         name = "myapp"
     }
     jdt {
-        sourceCompatibility = 17 // compile에 사용할 jdk 버전 설정
-        targetCompatibility = 17 // 실행할 jdk 버전 설정
-        javaRuntimeName = "JavaSE-17"
+        sourceCompatibility = 21 // compile에 사용할 jdk 버전 설정
+        targetCompatibility = 21 // 실행할 jdk 버전 설정
+        javaRuntimeName = "JavaSE-21"
     }
 }
 

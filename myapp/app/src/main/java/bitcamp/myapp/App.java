@@ -73,7 +73,17 @@ public class App {
     MenuGroup helpMenu = new MenuGroup("도움말");
     helpMenu.add(new MenuItem("도움말", new HelpHandler(prompt)));
     mainMenu.add(helpMenu);
-    mainMenu.execute(prompt);
-    prompt.close();
+
+    // Exception 처리를 하지 않은 부분에서 에러가 발생했을때 프로그램이 종료되지 않도록
+    // 최종적으로 가장 먼저 실행되는 곳에서 try ~ catch 문을 반복문안에 두어서 프로그램 종료를 방지
+    while (true) {
+      try {
+        mainMenu.execute(prompt);
+        prompt.close();
+        break;
+      } catch (Exception e) {
+        System.out.println("예외 발생!");
+      }
+    }
   }
 }
