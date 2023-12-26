@@ -8,9 +8,18 @@ public class Main {
     int a = scanner.nextInt();
     int b = scanner.nextInt();
     int v = scanner.nextInt();
-
-
-    System.out.println(v);
+    int rlt = 0;
+    if (v != a) {
+      v = v - b;
+      int temp = a - b;
+      rlt = v / temp;
+      if (v % temp != 0) {
+        rlt++;
+      }
+    } else {
+      rlt = 1;
+    }
+    System.out.println(rlt);
     scanner.close();
   }
 }
