@@ -1,13 +1,13 @@
 package bitcamp.menu;
 
+import bitcamp.util.LinkedList;
 import bitcamp.util.Prompt;
 
 // Composite 패턴에서 '복합 객체(Composite Object)'역할을 하는 클래스
 // - 다른 Menu 객체를 포함한다.
 public class MenuGroup extends AbstractMenu {
 
-  private Menu[] menus = new Menu[10];
-  private int menuSize;
+  private LinkedList<Menu> menus = new LinkedList<>();
 
   public MenuGroup(String title) {
     super(title);
@@ -28,7 +28,7 @@ public class MenuGroup extends AbstractMenu {
 
       try {
         int menuNo = Integer.parseInt(input);
-        this.menus[menuNo - 1].execute(prompt);
+        this.menus.get(menuNo - 1).execute(prompt);
       } catch (Exception e) {
         System.out.println("메뉴 번호가 옳지 않습니다.");
       }
@@ -37,44 +37,18 @@ public class MenuGroup extends AbstractMenu {
 
   private void printMenu() {
     System.out.printf("[%s]\n", this.getTitle());
-    for (int i = 0; i < this.menuSize; i++) {
-      System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());
+    for (int i = 0; i < this.menus.size(); i++) {
+      System.out.printf("%d. %s\n", (i + 1), menus.get(i).getTitle());
     }
     System.out.printf("0. %s\n", "이전");
   }
 
   public void add(Menu menu) {
-    if (this.menuSize == this.menus.length) {
-      int oldSize = this.menus.length;
-      int newSize = oldSize + (oldSize >> 1);
-
-      Menu[] arr = new Menu[newSize];
-      for (int i = 0; i < oldSize; i++) {
-        arr[i] = this.menus[i];
-      }
-      this.menus = arr;
-    }
-    this.menus[this.menuSize++] = menu;
+    this.menus.add(menu);
   }
 
   public void remove(Menu menu) {
-    // 메뉴 객체가 들어 있는 배열의 위치를 알아낸다.
-    int index = this.indexOf(menu);
-    if (index == -1) {
-      return;
-    }
-    for (int i = index; i < (this.menuSize - 1); i++) {
-      this.menus[i] = this.menus[i + 1];
-    }
-    this.menus[--this.menuSize] = null;
+    this.menus.remove(menu);
   }
 
-  int indexOf(Menu menu) {
-    for (int i = 0; i < menuSize; i++) {
-      if (menu == this.menus[i]) {
-        return i;
-      }
-    }
-    return -1;
-  }
 }
