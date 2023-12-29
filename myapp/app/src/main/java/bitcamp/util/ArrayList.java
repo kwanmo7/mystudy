@@ -72,4 +72,24 @@ public class ArrayList<E> extends AbstractList<E> {
     this.objects[index] = Object;
     return (E) old;
   }
+
+  @Override
+  public Iterator<E> iterator() {
+    return new Iterator<E>() {
+
+      int cursor;
+
+      @Override
+      public boolean hasNext() {
+        return cursor >= 0 && cursor < ArrayList.this.size();
+      }
+
+      @Override
+      public E next() {
+        return (E) ArrayList.this.get(cursor++);
+      }
+    };
+  }
+
+
 }

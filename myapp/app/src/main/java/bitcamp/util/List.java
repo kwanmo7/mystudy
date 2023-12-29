@@ -17,4 +17,6 @@ public interface List<E> {
   E set(int index, E Object);
 
   int size();
+
+  Iterator<E> iterator();
 }

@@ -2,7 +2,7 @@ package bitcamp.util;
 
 import java.util.Arrays;
 
-public class LinkedList<E> extends AbstractList<E> {
+public class LinkedList0<E> extends AbstractList<E> {
 
   private Node<E> first;
   private Node<E> last;
@@ -157,16 +157,122 @@ public class LinkedList<E> extends AbstractList<E> {
     return valuess;
   }
 
+  // 1) 패키지 멤버 클래스로 iterator 구현
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new LinkedListIterator<>(this);
+//  }
+
+  // 2) static 중첩 클래스
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>(this);
+//  }
+//
+//  private static class IteratorImpl<E> implements Iterator<E> {
+//
+//    LinkedList<E> list;
+//    int cursor;
+//
+//    public IteratorImpl(LinkedList<E> list) {
+//      this.list = list;
+//    }
+//
+//    @Override
+//    public boolean hasNext() {
+//      return cursor >= 0 && cursor < list.size();
+//    }
+//
+//    @Override
+//    public E next() {
+//      return list.get(cursor++);
+//    }
+//  }
+
+  // 3) non-static 중첩 클래스
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>();
+//  }
+//
+//  private class IteratorImpl<E> implements Iterator<E> {
+//
+//    Node<E> cursor;
+//
+//    public IteratorImpl() {
+//      this.cursor = (Node<E>) LinkedList.this.first;
+//    }
+//
+//    @Override
+//    public boolean hasNext() {
+//      return cursor != null;
+//    }
+//
+//    @Override
+//    public E next() {
+//      E value = cursor.value;
+//      cursor = cursor.next;
+//      return value;
+//    }
+//  }
+  // 4) 로컬 클래스
+//  @Override
+//  public Iterator<E> iterator() {
+//    class IteratorImpl<E> implements Iterator<E> {
+//
+//      Node<E> cursor;
+//
+//      public IteratorImpl() {
+//        this.cursor = (Node<E>) LinkedList.this.first;
+//      }
+//
+//      @Override
+//      public boolean hasNext() {
+//        return cursor != null;
+//      }
+//
+//      @Override
+//      public E next() {
+//        E value = cursor.value;
+//        cursor = cursor.next;
+//        return value;
+//      }
+//    }
+//    return new IteratorImpl<>();
+//  }
+
+  // 5) 익명 클래스
+//  @Override
+//  public Iterator<E> iterator() {
+//    Iterator<E> obj = new Iterator<E>() {
+//
+//      Node<E> cursor = (Node<E>) LinkedList.this.first;
+//
+//      @Override
+//      public boolean hasNext() {
+//        return cursor != null;
+//      }
+//
+//      @Override
+//      public E next() {
+//        E value = cursor.value;
+//        cursor = cursor.next;
+//        return value;
+//      }
+//    };
+//    return obj;
+//  }
+
+  // 6) 익명클래스2
   @Override
   public Iterator<E> iterator() {
     return new Iterator<E>() {
 
-      Node<E> cursor = (Node<E>) first;
+      Node<E> cursor = (Node<E>) LinkedList0.this.first;
 
       @Override
       public boolean hasNext() {
         return cursor != null;
-        w
       }
 
       @Override
@@ -177,7 +283,6 @@ public class LinkedList<E> extends AbstractList<E> {
       }
     };
   }
-
 
   private static class Node<E> {
 
