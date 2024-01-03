@@ -1,5 +1,7 @@
 package bitcamp.myapp;
 
+import bitcamp.io.DataInputStream;
+import bitcamp.io.DataOutputStream;
 import bitcamp.menu.MenuGroup;
 import bitcamp.myapp.handler.Help.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
@@ -20,21 +22,36 @@ import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.ArrayList;
-import bitcamp.util.List;
 import bitcamp.util.Prompt;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class App {
 
-  public static void main(String[] args) {
-    Prompt prompt = new Prompt(System.in);
-//    new MainMenu(prompt).execute();
-    List<Assignment> assignmentRepository = new LinkedList<>();
-    List<Board> boardRepository = new LinkedList<>();
-    List<Member> memberRepository = new ArrayList<>();
-    List<Board> greetingRepository = new ArrayList<>();
+  Prompt prompt = new Prompt(System.in);
 
-    MenuGroup mainMenu = MenuGroup.getInstance("메인");
+  List<Assignment> assignmentRepository = new LinkedList<>();
+  List<Board> boardRepository = new LinkedList<>();
+  List<Member> memberRepository = new ArrayList<>();
+  List<Board> greetingRepository = new ArrayList<>();
+  MenuGroup mainMenu;
+
+  App() {
+    prepareMenu();
+    loadAssignment();
+    loadMember();
+    loadBoard();
+    loadGreeting();
+  }
+
+  public static void main(String[] args) {
+    new App().run();
+  }
+
+  void prepareMenu() {
+    mainMenu = MenuGroup.getInstance("메인");
     MenuGroup assignmentMenu = mainMenu.addGroup("과제");
 
     assignmentMenu.addItem("등록", new AssignmentAddHandler(assignmentRepository, prompt));
@@ -68,9 +85,9 @@ public class App {
 
     MenuGroup helpMenu = mainMenu.addGroup("도움말");
     helpMenu.addItem("도움말", new HelpHandler(prompt));
+  }
 
-    // Exception 처리를 하지 않은 부분에서 에러가 발생했을때 프로그램이 종료되지 않도록
-    // 최종적으로 가장 먼저 실행되는 곳에서 try ~ catch 문을 반복문안에 두어서 프로그램 종료를 방지
+  void run() {
     while (true) {
       try {
         mainMenu.execute(prompt);
@@ -79,6 +96,142 @@ public class App {
       } catch (Exception e) {
         System.out.println("예외 발생!");
       }
+    }
+    saveAssignment();
+    saveMember();
+    saveBoard();
+    saveGreeting();
+  }
+
+  void loadAssignment() {
+    try (DataInputStream in = new DataInputStream("assignment.data")) {
+      byte[] bytes = new byte[60000];
+      int size = in.readShort();
+      for (int i = 0; i < size; i++) {
+        Assignment assignment = new Assignment();
+        assignment.setTitle(in.readUTF());
+        assignment.setContent(in.readUTF());
+        assignment.setDeadline(Date.valueOf(in.readUTF()));
+        assignmentRepository.add(assignment);
+      }
+    } catch (Exception e) {
+      System.out.println("과제 데이터 로딩 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void saveAssignment() {
+    try (DataOutputStream out = new DataOutputStream("assignment.data")) {
+      // 저장할 데이터 개수를 2바이트로 출력
+      out.writeShort(assignmentRepository.size());
+      for (Assignment assignment : assignmentRepository) {
+        out.writeUTF(assignment.getTitle());
+        out.writeUTF(assignment.getContent());
+        out.writeUTF(assignment.getDeadline().toString());
+      }
+    } catch (Exception e) {
+      System.out.println("과제 데이터 저장 중 오류 발생!");
+      e.printStackTrace();
+    }
+
+  }
+
+  void saveMember() {
+    try (DataOutputStream out = new DataOutputStream("member.data")) {
+      out.writeShort(memberRepository.size());
+      for (Member member : memberRepository) {
+        out.writeUTF(member.getName());
+        out.writeUTF(member.getEmail());
+        out.writeUTF(member.getPassword());
+        out.writeLong(member.getCreatedDate().getTime());
+      }
+    } catch (Exception e) {
+      System.out.println("멤버 데이터 저장 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void loadMember() {
+    try (DataInputStream in = new DataInputStream("member.data")) {
+      byte[] bytes = new byte[60000];
+      int size = in.readShort();
+      for (int i = 0; i < size; i++) {
+        Member member = new Member();
+        member.setName(in.readUTF());
+        member.setEmail(in.readUTF());
+        member.setPassword(in.readUTF());
+        member.setCreatedDate(new java.util.Date(in.readLong()));
+        memberRepository.add(member);
+      }
+    } catch (Exception e) {
+      System.out.println("멤버 데이터 로딩 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void saveBoard() {
+    try (DataOutputStream out = new DataOutputStream("board.data")) {
+      out.writeShort(boardRepository.size());
+      for (Board board : boardRepository) {
+        out.writeUTF(board.getTitle());
+        out.writeUTF(board.getContent());
+        out.writeUTF(board.getWriter());
+        out.writeLong(board.getCreatedDate().getTime());
+      }
+    } catch (Exception e) {
+      System.out.println("게시판 데이터 저장 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void loadBoard() {
+    try (DataInputStream in = new DataInputStream("board.data")) {
+      int size = in.readShort();
+      for (int i = 0; i < size; i++) {
+        Board board = new Board();
+        board.setTitle(in.readUTF());
+        board.setContent(in.readUTF());
+        board.setWriter(in.readUTF());
+        board.setCreatedDate(new java.util.Date(in.readLong()));
+        boardRepository.add(board);
+      }
+
+    } catch (Exception e) {
+      System.out.println("게시판 데이터 로딩 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void saveGreeting() {
+    try (DataOutputStream out = new DataOutputStream("greeting.data")) {
+      out.writeShort(greetingRepository.size());
+      for (Board greeting : greetingRepository) {
+        out.writeUTF(greeting.getTitle());
+        out.writeUTF(greeting.getContent());
+        out.writeUTF(greeting.getWriter());
+        out.writeLong(greeting.getCreatedDate().getTime());
+      }
+    } catch (Exception e) {
+      System.out.println("가입인사 데이터 저장 중 오류 발생!");
+      e.printStackTrace();
+    }
+  }
+
+  void loadGreeting() {
+    try (DataInputStream in = new DataInputStream("greeting.data")) {
+      int size = in.readShort();
+      for (int i = 0; i < size; i++) {
+        Board greeting = new Board();
+        greeting.setTitle(in.readUTF());
+        greeting.setContent(in.readUTF());
+        greeting.setWriter(in.readUTF());
+        greeting.setCreatedDate(new java.util.Date(in.readLong()));
+        greetingRepository.add(greeting);
+      }
+
+    } catch (Exception e) {
+      System.out.println("가입인사 데이터 로딩 중 오류 발생!");
+      e.printStackTrace();
     }
   }
 }
