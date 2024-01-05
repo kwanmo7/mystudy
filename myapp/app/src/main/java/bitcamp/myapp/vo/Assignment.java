@@ -1,12 +1,35 @@
 package bitcamp.myapp.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Assignment {
+public class Assignment implements Serializable, CsvString {
+
+  // serialVersion 지정
+  private static final long serialVersionUID = 100L;
 
   private String title;
   private String content;
   private Date deadline;
+
+  // 팩토리 메서드
+  // 방법 1
+  public static Assignment createFromCsv(String csv) {
+    String[] values = csv.split(",");
+    Assignment obj = new Assignment();
+    obj.setTitle(values[0]);
+    obj.setContent(values[1]);
+    obj.setDeadline(Date.valueOf(values[2]));
+    return obj;
+  }
+
+  // 방법 2
+  public void setFromCsv(String csv) {
+    String[] values = csv.split(",");
+    title = values[0];
+    content = values[1];
+    deadline = Date.valueOf(values[2]);
+  }
 
   public String getTitle() {
     return title;
@@ -31,4 +54,10 @@ public class Assignment {
   public void setDeadline(Date deadline) {
     this.deadline = deadline;
   }
+
+  @Override
+  public String toCsvString() {
+    return String.format("%s,%s,%s", title, content, deadline);
+  }
+
 }
