@@ -3,34 +3,36 @@ package algorithm.test.baekjoon.level12.exam04;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    Scanner scanner = new Scanner(System.in);
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    int a = scanner.nextInt();
-    int b = scanner.nextInt();
+    String[] in = br.readLine().split(" ");
+    int a = Integer.parseInt(in[0]);
+    int b = Integer.parseInt(in[1]);
+    char B = 'B';
+    char W = 'W';
+    int cntB = 0;
+    int cntW = 0;
+    String[] input = new String[a];
+    for (int i = 0; i < a; i++) {
+      input[i] = br.readLine();
+    }
+    int start = chkstartPoint(input, b);
+    for (int i = start; i < b; i++) {
 
-    String[][] arr = new String[a][b];
+    }
 
-    String B = "B";
-    String W = "W";
+    System.out.println();
+  }
 
-    int cnt = 0;
-
-    for (int i = 0; i < arr.length; i++) {
-      for (int j = 0; j < arr.length; j++) {
-
-        if (arr[i][j].equals(B)) {
-          cnt++;
-        } else {
-          cnt--;
-        }
+  static int chkstartPoint(String[] input, int b) {
+    for (int i = 0; i < b - 1; i++) {
+      if (input[i].substring(i, i + 1).equals("BW") || input[i].substring(i, i + 1).equals("WB")) {
+        return i;
       }
     }
-    System.out.println(cnt);
-    System.out.println(Math.abs(cnt));
-    br.close();
+
+    return 0;
   }
 }
