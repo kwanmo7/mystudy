@@ -24,7 +24,7 @@ public class Main {
     }
     chkstartPoint(input, a, b);
     a -= m;
-    b -= n;
+    b -= n;\
 
     System.out.println();
   }
