@@ -8,6 +8,9 @@ public class Exam0150 {
   }
 
   public static void main(String[] args) {
+    Calculator c0 = (int a, int b) -> a / b;
+    System.out.println(c0.compute(8080, 4));
+
     // 1) 리턴 값은 return 명령을 사용하여 처리한다.
     Calculator c1 = (a, b) -> {
       return a + b;
@@ -25,8 +28,8 @@ public class Exam0150 {
     System.out.println(c3.compute(10, 20));
 
     // 값을 리턴해야 하는데 람다 문장에서 값을 리턴하지 않으면 컴파일 오류!
-    //    Calculator c4 = (a, b) -> System.out.println(a + ",", b); // 컴파일 오류!
-    //    System.out.println(c4.compute(10, 20));
+    // Calculator c4 = (a, b) -> System.out.println(a + ",", b); // 컴파일 오류!
+    // System.out.println(c4.compute(10, 20));
   }
 
 }

@@ -37,7 +37,7 @@ public class Exam0520 {
     Calculator c02 = MyCalculator::minus;
     Calculator c03 = MyCalculator::multiple;
     Calculator c04 = MyCalculator::divide;
-    // Calculator c05 = MyCalculator::power; // 해당 메서드를 가지고 구현체를 만들 수 없다.
+    // Calculator c05 = MyCalculator::power; // 해당 메서드를 가지고 구현체를 만들 수 없다. 인터페이스 규칙에 어긋난 메서드는 구현 불가
 
     // 위의 코드는 내부적으로 다음과 같다.
     //
@@ -51,13 +51,13 @@ public class Exam0520 {
         // 그 파라미터 값은 메서드 레퍼런스로 지정된
         // 스태틱 메서드(예: plus())에게 전달될 것이다.
         // => 그래서 스태틱 메서드의 파라미터는 항상
-        //    인터페이스 메서드에 정의된 파라미터 값을 받을 수 있어야 한다.
+        // 인터페이스 메서드에 정의된 파라미터 값을 받을 수 있어야 한다.
         //
         // 스태틱 메서드의 리턴 값은
         // 인터페이스 메서드에 정의된 대로 리턴할 수 있어야 한다.
         // => 그래서 스태틱 메서드의 리턴 타입은
-        //    인터페이스 메서드의 리턴 타입과 일치하거나
-        //    그 타입으로 바꿀 수 있어야 한다.
+        // 인터페이스 메서드의 리턴 타입과 일치하거나
+        // 그 타입으로 바꿀 수 있어야 한다.
         //
         return MyCalculator.plus(a, b);
       }

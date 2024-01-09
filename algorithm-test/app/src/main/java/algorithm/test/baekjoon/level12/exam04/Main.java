@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+
+  static int m;
+  static int n;
+
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     String[] in = br.readLine().split(" ");
@@ -18,21 +22,26 @@ public class Main {
     for (int i = 0; i < a; i++) {
       input[i] = br.readLine();
     }
-    int start = chkstartPoint(input, b);
-    for (int i = start; i < b; i++) {
-
-    }
+    chkstartPoint(input, a, b);
+    a -= m;
+    b -= n;
 
     System.out.println();
   }
 
-  static int chkstartPoint(String[] input, int b) {
-    for (int i = 0; i < b - 1; i++) {
-      if (input[i].substring(i, i + 1).equals("BW") || input[i].substring(i, i + 1).equals("WB")) {
-        return i;
+  static void chkstartPoint(String[] input, int a, int b) {
+    for (int i = 0; i < a; i++) {
+      if (input[i].contains("BW") || input[i].contains("WB")) {
+        for (int j = 0; j < b - 1; j++) {
+          if (input[i].substring(j, j + 1).equals("BW")
+              || input[i].substring(j, j + 1).equals("WB")) {
+            m = i;
+            n = j;
+            return;
+          }
+        }
       }
     }
-
-    return 0;
+    return;
   }
 }
