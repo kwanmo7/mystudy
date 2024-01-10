@@ -53,4 +53,14 @@ public class Board implements Serializable {
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
   }
+
+  @Override
+  public String toString() {
+    return "Board{" +
+        "title='" + title + '\'' +
+        ", content='" + content + '\'' +
+        ", writer='" + writer + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
+  }
 }
