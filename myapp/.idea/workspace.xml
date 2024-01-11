@@ -5,14 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AbstractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam04/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam04/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/annotation/ex1/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/annotation/ex1/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/annotation/ex3/MyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/annotation/ex3/MyClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex13/Exam01.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex13/Exam01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/BoardDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/MemberDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assignment.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/assignment.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/board.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/board.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/greeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/greeting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/member.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/member.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AbstractDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
@@ -93,31 +114,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.QueueTest.executor": "Run",
-    "Application.StackTest.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.myapp [buildDependents].executor": "Run",
-    "Gradle.myapp [buildNeeded].executor": "Run",
-    "Gradle.myapp [build].executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "Gradle.myapp:app [classes].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/git/mystudy/myapp",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.QueueTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [classes].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/git/mystudy/myapp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\git\mystudy\myapp\app\src\test\resources" />
@@ -126,20 +147,20 @@
       <recent name="bitcamp.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.dao.json" />
       <recent name="bitcamp.io" />
       <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp.menu" />
       <recent name="bitcamp.myapp.vo" />
-      <recent name="bitcamp.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DaoTest">
+  <component name="RunManager" selected="Gradle.myapp [run]">
     <configuration name="DaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.dao.DaoTest" />
       <module name="myapp.app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.dao.*" />
+          <option name="PATTERN" value="bitcamp.myapp.dao.json.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -237,8 +258,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DaoTest" />
         <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Application.DaoTest" />
         <item itemvalue="Gradle.myapp [buildNeeded]" />
         <item itemvalue="Gradle.myapp [build]" />
         <item itemvalue="Gradle.myapp [buildDependents]" />

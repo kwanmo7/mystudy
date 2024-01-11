@@ -7,6 +7,7 @@ public class Board implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
+  private int no;
   private String title;
   private String content;
   private String writer;
@@ -20,6 +21,14 @@ public class Board implements Serializable {
     obj.setWriter(values[2]);
     obj.setCreatedDate(new Date(Long.valueOf(values[3])));
     return obj;
+  }
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
   }
 
   public String getTitle() {
@@ -54,10 +63,12 @@ public class Board implements Serializable {
     this.createdDate = createdDate;
   }
 
+
   @Override
   public String toString() {
     return "Board{" +
-        "title='" + title + '\'' +
+        "no=" + no + '\'' +
+        ", title='" + title + '\'' +
         ", content='" + content + '\'' +
         ", writer='" + writer + '\'' +
         ", createdDate=" + createdDate +

@@ -8,6 +8,7 @@ public class Assignment implements Serializable {
   // serialVersion 지정
   private static final long serialVersionUID = 100L;
 
+  private int no;
   private String title;
   private String content;
   private Date deadline;
@@ -29,6 +30,14 @@ public class Assignment implements Serializable {
     title = values[0];
     content = values[1];
     deadline = Date.valueOf(values[2]);
+  }
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
   }
 
   public String getTitle() {
