@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,55 +19,52 @@ public class Main {
     ArrayList<Integer> arrlist = new ArrayList<>();
     for (int i = 0; i <= (x - 8); i++) {
       for (int j = 0; j <= (y - 8); j++) {
-        arrlist.add(calc(input, i, j));
+        arrlist.add(calcB(input, i, j));
+        arrlist.add(calcW(input, i, j));
       }
     }
     Collections.sort(arrlist);
     System.out.println(arrlist.get(0));
   }
 
-  static int calc(String[] input, int x, int y) {
+  static int calcB(String[] input, int x, int y) {
     int cnt = 0;
-    char chk = input[x].charAt(y);
-    System.out.println("--------------------------------");
-    System.out.printf("chk=%s x=%d y=%d\n", String.valueOf(chk), x, y);
+    char chk = 'B';
     for (int i = x; i < (8 + x); i++) {
       for (int j = y; j < (8 + y); j++) {
-        if (chk == 'B') {
-          if (i % 2 == 0 && j % 2 != 0 && input[i].charAt(j) == chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 == 0 && j % 2 == 0 && input[i].charAt(j) != chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 != 0 && j % 2 != 0 && input[i].charAt(j) != chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 != 0 && j % 2 == 0 && input[i].charAt(j) == chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
+        if (i % 2 == 0 && j % 2 != 0 && input[i].charAt(j) == chk) {
+          cnt++;
         }
-        if (chk == 'W') {
-          if (i % 2 == 0 && j % 2 != 0 && input[i].charAt(j) == chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 == 0 && j % 2 == 0 && input[i].charAt(j) != chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 != 0 && j % 2 != 0 && input[i].charAt(j) != chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
-          if (i % 2 != 0 && j % 2 == 0 && input[i].charAt(j) == chk) {
-            cnt++;
-            System.out.printf("i=%s,j=%s,cnt=%s, %s\n", i, j, cnt, input[i].charAt(j));
-          }
+        if (i % 2 == 0 && j % 2 == 0 && input[i].charAt(j) != chk) {
+          cnt++;
+        }
+        if (i % 2 != 0 && j % 2 != 0 && input[i].charAt(j) != chk) {
+          cnt++;
+        }
+        if (i % 2 != 0 && j % 2 == 0 && input[i].charAt(j) == chk) {
+          cnt++;
+        }
+      }
+    }
+    return cnt;
+  }
+
+  static int calcW(String[] input, int x, int y) {
+    int cnt = 0;
+    char chk = 'W';
+    for (int i = x; i < (8 + x); i++) {
+      for (int j = y; j < (8 + y); j++) {
+        if (i % 2 == 0 && j % 2 != 0 && input[i].charAt(j) == chk) {
+          cnt++;
+        }
+        if (i % 2 == 0 && j % 2 == 0 && input[i].charAt(j) != chk) {
+          cnt++;
+        }
+        if (i % 2 != 0 && j % 2 != 0 && input[i].charAt(j) != chk) {
+          cnt++;
+        }
+        if (i % 2 != 0 && j % 2 == 0 && input[i].charAt(j) == chk) {
+          cnt++;
         }
       }
     }

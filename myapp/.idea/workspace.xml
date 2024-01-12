@@ -5,38 +5,114 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/BoardDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/AbstractMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/AbstractMenuHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/MenuGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/MenuHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/menu/MenuItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/DaoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/AssignmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/BoardDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/Help/HelpHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/vo/Assignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/vo/ConstVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/util/AnsiEscape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/util/Prompt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/resources/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/test/java/bitcamp/myapp/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/test/resources/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/assignment.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/board.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/greeting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/member.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/DaoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/AbstractDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/BoardDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/vo/Assignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/resources/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/test/java/bitcamp/myapp/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/test/resources/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam03/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam03/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam04/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam04/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assignment.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/assignment.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/board.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/board.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/greeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/greeting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/member.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/member.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/AbstractMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/AbstractMenuHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/MenuGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/MenuHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/menu/MenuItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/HelpHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/assignment/AssignmentViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/member/MemberAddHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/member/MemberListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/handler/member/MemberViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/vo/Assignment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/vo/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/AbstractList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/AnsiEscape.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/ArrayList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/List.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/Prompt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/Stack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/java/bitcamp/util/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/main/resources/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/test/java/bitcamp/myapp/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-p/src/test/resources/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +133,12 @@
         <task path="$PROJECT_DIR$/app">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/app-client">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app-server">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -67,19 +149,38 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-client" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -128,6 +229,8 @@
     &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -136,25 +239,28 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.breadcrumbs&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\git\mystudy\myapp\app-client" />
+      <recent name="C:\Users\User\git\mystudy\myapp\app-server" />
+      <recent name="C:\Users\User\git\mystudy\myapp" />
       <recent name="C:\Users\User\git\mystudy\myapp\app\src\test\resources" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="bitcamp.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.dao.network" />
       <recent name="bitcamp.myapp.dao.json" />
       <recent name="bitcamp.io" />
       <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp.menu" />
-      <recent name="bitcamp.myapp.vo" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp [run]">
+  <component name="RunManager" selected="Gradle.myapp:app-client [run]">
     <configuration name="DaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.dao.DaoTest" />
       <module name="myapp.app.main" />
@@ -168,28 +274,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="myapp [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="myapp [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -202,28 +286,6 @@
         <option name="taskNames">
           <list>
             <option value="buildNeeded" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="myapp [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -256,13 +318,57 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="myapp:app-client [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app-client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="myapp:app-server [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app-server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp:app-client [run]" />
+        <item itemvalue="Gradle.myapp:app-server [run]" />
         <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Application.DaoTest" />
         <item itemvalue="Gradle.myapp [buildNeeded]" />
-        <item itemvalue="Gradle.myapp [build]" />
-        <item itemvalue="Gradle.myapp [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
