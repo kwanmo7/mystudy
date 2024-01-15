@@ -32,6 +32,10 @@ public class ClientApp {
 
   Prompt prompt = new Prompt(System.in);
 
+  Socket socket;
+  DataInputStream in;
+  DataOutputStream out;
+
   AssignmentDao assignmentDao;
   MemberDao memberDao;
   BoardDao boardDao;
@@ -95,14 +99,12 @@ public class ClientApp {
       // 127.0.0.1 => 로컬 컴퓨터를 가리키는 주소
       // - 도메인명 : localhost
 
-      Socket socket = new Socket("localhost", 8888);
+      socket = new Socket("localhost", 8888);
       System.out.println("서버와 연결 되었음");
 
-      DataInputStream in = new DataInputStream(socket.getInputStream());
-      DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-      System.out.println("입출력 준비 완료");
+      in = new DataInputStream(socket.getInputStream());
+      out = new DataOutputStream(socket.getOutputStream());
 
-      // Network DAO 구현체
       boardDao = new BoardDaoImpl("board", in, out);
       greetingDao = new BoardDaoImpl("greeting", in, out);
       assignmentDao = new AssignmentDaoImpl("assignment", in, out);
@@ -118,10 +120,21 @@ public class ClientApp {
       try {
         mainMenu.execute(prompt);
         prompt.close();
+        close();
         break;
       } catch (Exception e) {
         System.out.println("예외 발생!");
       }
+    }
+  }
+
+  void close() {
+    try (Socket socket = this.socket; DataInputStream in = this.in; DataOutputStream out = this.out;) {
+      out.writeUTF("quit");
+      System.out.println(in.readUTF());
+    } catch (Exception e) {
+      // 서버와 연결을 끊는 과정에서 예외가 발생한 경우 무시
+      // 따로 처리할 것이 없다
     }
   }
 }

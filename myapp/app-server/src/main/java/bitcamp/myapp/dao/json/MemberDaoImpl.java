@@ -13,6 +13,7 @@ public class MemberDaoImpl extends AbstractDao<Member> implements MemberDao {
     lastkey = list.getLast().getNo();
   }
 
+  
   @Override
   public void add(Member member) {
     member.setNo(++lastkey);

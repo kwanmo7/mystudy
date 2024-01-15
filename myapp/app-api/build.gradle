@@ -7,7 +7,7 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
+    id 'java-library'
 }
 
 repositories {
@@ -17,10 +17,7 @@ repositories {
 
 dependencies {
     // 공통 소스 / 서브 프로젝트를 같이 컴파일,빌드에 사용
-    // VO 객체와 DAO 인터페이스
     implementation project(':app-common')
-    // DAO Stub 객체
-    implementation project(':app-api')
     // json 라이브러리
     implementation 'com.google.code.gson:gson:2.10.1'
 
@@ -40,11 +37,6 @@ java {
     }
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'bitcamp.myapp.ClientApp'
-}
-
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
@@ -52,12 +44,6 @@ tasks.named('test') {
 
 // 컴파일 적용 옵션 설정
 tasks.withType(JavaCompile).configureEach {
-    // 컴파일시 utf-8로 컴파일하도록 설정
-    options.encoding = 'UTF-8'
+            // 컴파일시 utf-8로 컴파일하도록 설정
+            options.encoding = 'UTF-8'
 }
-
-run {
-    // gradle로 어플리케이션 실행했을 때 키보드 입력을 표준입력 스트림으로 연결
-    standardInput = System.in
-}
-
