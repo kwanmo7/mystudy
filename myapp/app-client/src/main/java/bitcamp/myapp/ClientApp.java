@@ -3,10 +3,8 @@ package bitcamp.myapp;
 import bitcamp.menu.MenuGroup;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.dao.DaoProxyGenerator;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.network.AssignmentDaoImpl;
-import bitcamp.myapp.dao.network.BoardDaoImpl;
-import bitcamp.myapp.dao.network.MemberDaoImpl;
 import bitcamp.myapp.handler.Help.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
 import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -98,17 +96,12 @@ public class ClientApp {
       // 포트 번호 : 상대편 서버 포트 번호
       // 127.0.0.1 => 로컬 컴퓨터를 가리키는 주소
       // - 도메인명 : localhost
+      DaoProxyGenerator daoGenerator = new DaoProxyGenerator("localhost", 8888);
 
-      socket = new Socket("localhost", 8888);
-      System.out.println("서버와 연결 되었음");
-
-      in = new DataInputStream(socket.getInputStream());
-      out = new DataOutputStream(socket.getOutputStream());
-
-      boardDao = new BoardDaoImpl("board", in, out);
-      greetingDao = new BoardDaoImpl("greeting", in, out);
-      assignmentDao = new AssignmentDaoImpl("assignment", in, out);
-      memberDao = new MemberDaoImpl("member", in, out);
+      boardDao = daoGenerator.create(BoardDao.class, "board");
+      greetingDao = daoGenerator.create(BoardDao.class, "greeting");
+      assignmentDao = daoGenerator.create(AssignmentDao.class, "assignment");
+      memberDao = daoGenerator.create(MemberDao.class, "member");
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -120,7 +113,6 @@ public class ClientApp {
       try {
         mainMenu.execute(prompt);
         prompt.close();
-        close();
         break;
       } catch (Exception e) {
         System.out.println("예외 발생!");
@@ -128,13 +120,4 @@ public class ClientApp {
     }
   }
 
-  void close() {
-    try (Socket socket = this.socket; DataInputStream in = this.in; DataOutputStream out = this.out;) {
-      out.writeUTF("quit");
-      System.out.println(in.readUTF());
-    } catch (Exception e) {
-      // 서버와 연결을 끊는 과정에서 예외가 발생한 경우 무시
-      // 따로 처리할 것이 없다
-    }
-  }
 }
