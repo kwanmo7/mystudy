@@ -22,17 +22,10 @@ import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.util.Prompt;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.Socket;
 
 public class ClientApp {
 
   Prompt prompt = new Prompt(System.in);
-
-  Socket socket;
-  DataInputStream in;
-  DataOutputStream out;
 
   AssignmentDao assignmentDao;
   MemberDao memberDao;

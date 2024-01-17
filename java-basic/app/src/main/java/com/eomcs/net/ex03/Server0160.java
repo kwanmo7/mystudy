@@ -29,7 +29,7 @@ public class Server0160 {
         System.out.print(">");
         keyboard.nextLine();
 
-        out.println(str);
+        out.println(keyboard.nextLine());
         out.flush();
         // 버퍼를 사용할 때는
         // 데이터를 보내기 위해 반드시 flush()를 호출해야 한다.
