@@ -15,12 +15,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class ServerApp {
+public class ServerApp01 {
 
   HashMap<String, Object> daoMap = new HashMap<>();
   Gson gson;
 
-  public ServerApp() {
+  public ServerApp01() {
     daoMap.put("board", new BoardDaoImpl("board.json"));
     daoMap.put("greeting", new BoardDaoImpl("greeting.json"));
     daoMap.put("assignment", new AssignmentDaoImpl("assignment.json"));
@@ -30,7 +30,7 @@ public class ServerApp {
   }
 
   public static void main(String[] args) {
-    new ServerApp().run();
+    new ServerApp01().run();
   }
 
   void run() {
@@ -39,15 +39,7 @@ public class ServerApp {
       System.out.println("서버 실행 중...");
       System.out.println("클라이언트 연결을 기다리는 중...");
       while (true) {
-        Socket socket = serverSocket.accept();
-        new Thread(() -> {
-          try {
-            ServerApp.this.service(socket);
-          } catch (Exception e) {
-            System.out.println("클라이언트 요청 처리 중 오류 발생");
-            e.printStackTrace();
-          }
-        }).start();
+        new RequestProcessor(serverSocket.accept()).start();
       }
     } catch (Exception e) {
       System.out.println("통신 오류!");
@@ -136,5 +128,26 @@ public class ServerApp {
       args[0] = gson.fromJson(json, params[0].getType());
     }
     return args;
+  }
+
+  // non-static nested class(inner class)는 바깥 클래스(enclosing class)의 인스턴스 주소를 자동으로 받는다
+  // 바깥 클래스의 인스턴스 멤버를 사용할 수 있다
+  class RequestProcessor extends Thread {
+
+    Socket socket;
+
+    RequestProcessor(Socket socket) {
+      this.socket = socket;
+    }
+
+    @Override
+    public void run() {
+      try {
+        ServerApp01.this.service(socket);
+      } catch (Exception e) {
+        System.out.println("클라이언트 요청 처리 중 오류 발생");
+        e.printStackTrace();
+      }
+    }
   }
 }

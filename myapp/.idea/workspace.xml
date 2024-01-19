@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam06/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level12/exam06/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/Client0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/Client0110.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/Server0140.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/Server0140.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/stateless2/CalcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/stateless2/CalcClient2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/stateless2/CalcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/net/ex04/stateless2/CalcServer3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,11 +131,11 @@
       <recent name="bitcamp.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp" />
+      <recent name="bitcamp.myapp.dao" />
       <recent name="bitcamp.myapp.dao.network" />
       <recent name="bitcamp.myapp.dao.json" />
       <recent name="bitcamp.io" />
-      <recent name="bitcamp.util" />
-      <recent name="bitcamp.myapp.menu" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp:app-client [run]">
