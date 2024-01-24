@@ -10,8 +10,11 @@ public class Main {
     int n = scanner.nextInt();
     int m = Integer.parseInt(scanner.nextLine().trim());
     HashMap<Integer, String> map = new HashMap<Integer, String>();
+    HashMap<String, Integer> map2 = new HashMap<String, Integer>();
     for (int i = 1; i <= n; i++) {
-      map.put(i, scanner.nextLine());
+      String in = scanner.nextLine();
+      map.put(i, in);
+      map2.put(in, i);
     }
 
     StringBuilder sb = new StringBuilder();
@@ -19,9 +22,9 @@ public class Main {
       String input = scanner.nextLine();
       char chk = input.charAt(0);
       if (chk > 64 && chk < 91) {
-        // sb.append(entry.getKey() + "\n");
+        sb.append(map2.get(input) + "\n");
       } else if (chk > 47 && chk < 58) {
-        // sb.append(entry.getValue() + "\n");
+        sb.append(map.get(Integer.parseInt(input)) + "\n");
       }
     }
     System.out.print(sb);
