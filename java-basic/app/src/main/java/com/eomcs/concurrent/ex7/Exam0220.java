@@ -16,18 +16,17 @@ public class Exam0220 {
     @Override
     public void run() {
       try {
-        System.out.printf("%s 스레드에서 작업 실행...\n",
-            Thread.currentThread().getName());
+        System.out.printf("%s 스레드에서 작업 실행...\n", Thread.currentThread().getName());
 
         Thread.sleep(millisec);
 
-        System.out.printf("%s 작업 끝내고 스레드 대기중!\n",
-            Thread.currentThread().getName());
+        System.out.printf("%s 작업 끝내고 스레드 대기중!\n", Thread.currentThread().getName());
       } catch (Exception e) {
         System.out.printf("%s 스레드 실행 중 오류 발생!\n", Thread.currentThread().getName());
       }
     }
   }
+
   public static void main(String[] args) throws Exception {
 
     // 스레드의 수를 고정하지 않고 필요할 때마다 스레드를 생성하는 스레드풀이다.
@@ -49,7 +48,11 @@ public class Exam0220 {
     // 작업을 끝낸 스레드가 요청한 작업을 처리한다.
     //
     executorService.execute(new MyRunnable(4000));
+    executorService.execute(new MyRunnable(7000));
+    executorService.execute(new MyRunnable(9000));
 
+
+    executorService.shutdown();
     System.out.println("main() 종료!");
   }
 }
