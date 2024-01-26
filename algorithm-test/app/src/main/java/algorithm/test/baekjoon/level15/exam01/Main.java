@@ -1,5 +1,7 @@
 package algorithm.test.baekjoon.level15.exam01;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +11,8 @@ public class Main {
     for (int i = 0; i < n; i++) {
       int m = scanner.nextInt();
       int k = Integer.parseInt(scanner.nextLine().trim());
+      System.out.println(calc(m, k));
     }
-
     scanner.close();
   }
 
@@ -18,6 +20,23 @@ public class Main {
     if (a == 1 || b == 1) {
       return a * b;
     }
-    return 0;
+    HashSet<Integer> hm = new HashSet<Integer>();
+    for (int i = 1; i <= a; i++) {
+      if (a % i == 0) {
+        hm.add(i);
+      }
+    }
+    Iterator<Integer> it = hm.iterator();
+    int rlt = a * b;
+    while (it.hasNext()) {
+      int bb = it.next();
+      int temp = bb * b;
+      if (temp % a == 0) {
+        if (rlt > temp) {
+          rlt = temp;
+        }
+      }
+    }
+    return rlt;
   }
 }

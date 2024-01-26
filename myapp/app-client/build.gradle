@@ -17,12 +17,12 @@ repositories {
 
 dependencies {
     // 공통 소스 / 서브 프로젝트를 같이 컴파일,빌드에 사용
-    // VO 객체와 DAO 인터페이스
-    implementation project(':app-common')
-    // DAO Stub 객체
-    implementation project(':app-api')
-    // json 라이브러리
-    implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // MySQL JDBC Driver
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
+
+//    // json 라이브러리
+//    implementation 'com.google.code.gson:gson:2.10.1'
 
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'

@@ -3,8 +3,10 @@ package bitcamp.myapp;
 import bitcamp.menu.MenuGroup;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.DaoProxyGenerator;
 import bitcamp.myapp.dao.MemberDao;
+import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
+import bitcamp.myapp.dao.mysql.BoardDaoImpl;
+import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.handler.Help.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
 import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -22,6 +24,8 @@ import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.util.Prompt;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class ClientApp {
 
@@ -34,7 +38,7 @@ public class ClientApp {
   MenuGroup mainMenu;
 
   ClientApp() {
-    prepareNetwork();
+    prepareDatabase();
     prepareMenu();
   }
 
@@ -81,20 +85,18 @@ public class ClientApp {
     helpMenu.addItem("도움말", new HelpHandler(prompt));
   }
 
-  void prepareNetwork() {
+  void prepareDatabase() {
     try {
-      // 1) 서버와 연결한 후 연결 정보 준비
-      // -> new Socket(서버주소,포트번호);
-      // 서버 주소 : IP주소 / 도메인명
-      // 포트 번호 : 상대편 서버 포트 번호
-      // 127.0.0.1 => 로컬 컴퓨터를 가리키는 주소
-      // - 도메인명 : localhost
-      DaoProxyGenerator daoGenerator = new DaoProxyGenerator("localhost", 8888);
+      // JVM이 JDBC 드라이버 파일(.jar)에 설정된대로 자동으로 처리한다
+//      Driver driver = new com.mysql.cj.jdbc.Driver();
+//      DriverManager.registerDriver(driver);
+      Connection con = DriverManager.getConnection("jdbc:mysql://localhost/studydb", "study",
+          "1111");
 
-      boardDao = daoGenerator.create(BoardDao.class, "board");
-      greetingDao = daoGenerator.create(BoardDao.class, "greeting");
-      assignmentDao = daoGenerator.create(AssignmentDao.class, "assignment");
-      memberDao = daoGenerator.create(MemberDao.class, "member");
+      boardDao = new BoardDaoImpl(con, 1);
+      greetingDao = new BoardDaoImpl(con, 2);
+      assignmentDao = new AssignmentDaoImpl(con);
+      memberDao = new MemberDaoImpl(con);
 
     } catch (Exception e) {
       e.printStackTrace();
