@@ -4,7 +4,6 @@ import bitcamp.RequestException;
 import bitcamp.myapp.dao.json.AssignmentDaoImpl;
 import bitcamp.myapp.dao.json.BoardDaoImpl;
 import bitcamp.myapp.dao.json.MemberDaoImpl;
-import bitcamp.util.ThreadPool;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.DataInputStream;
@@ -15,10 +14,12 @@ import java.lang.reflect.Parameter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerApp {
 
-  ThreadPool threadPool = new ThreadPool(5);
+  ExecutorService executorService = Executors.newCachedThreadPool();
   HashMap<String, Object> daoMap = new HashMap<>();
   Gson gson;
 
@@ -42,7 +43,7 @@ public class ServerApp {
       System.out.println("클라이언트 연결을 기다리는 중...");
       while (true) {
         Socket socket = serverSocket.accept();
-        threadPool.get().setWorker(() -> service(socket));
+        executorService.execute(() -> service(socket));
       }
     } catch (Exception e) {
       System.out.println("통신 오류!");
