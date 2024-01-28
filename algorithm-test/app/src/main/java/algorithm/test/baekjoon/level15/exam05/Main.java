@@ -10,15 +10,20 @@ public class Main {
     for (int i = 0; i < n; i++) {
       arr[i] = Long.parseLong(scanner.nextLine());
     }
-
+    StringBuilder sb = new StringBuilder();
     for (int i = 0; i < n; i++) {
-      System.out.println(calc(arr[i]));
+      sb.append(calc(arr[i]) + "\n");
     }
+    System.out.print(sb);
     scanner.close();
   }
 
   static long calc(long input) {
-    for (long i = input; i <= 4 * Math.pow(10, 9); i++) {
+    long i = input;
+    while (true) {
+      if (i < 2) {
+        return 2;
+      }
       boolean chk = true;
       for (long j = 2; j * j <= i; j++) {
         if ((i % j) == 0) {
@@ -29,7 +34,7 @@ public class Main {
       if (chk == true) {
         return i;
       }
+      i++;
     }
-    return 0;
   }
 }
