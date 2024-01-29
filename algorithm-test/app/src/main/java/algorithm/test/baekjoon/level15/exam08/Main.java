@@ -1,6 +1,5 @@
 package algorithm.test.baekjoon.level15.exam08;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -8,53 +7,35 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     int n = Integer.parseInt(scanner.nextLine());
     int[] arr = new int[n];
-    StringBuilder sb = new StringBuilder();
-    int max = 0;
+    int max = 1;
     for (int i = 0; i < n; i++) {
       arr[i] = Integer.parseInt(scanner.nextLine());
       if (max < arr[i]) {
         max = arr[i];
       }
     }
-    ArrayList<Integer> list = get(max);
-
-    for (int i = 0; i < arr.length; i++) {
-      sb.append(calc(list, arr[i]) + "\n");
-    }
-
-    System.out.print(sb);
-    scanner.close();
-  }
-
-  static ArrayList<Integer> get(int n) {
-    ArrayList<Integer> list = new ArrayList<Integer>();
-    for (int i = 2; i < n; i++) {
-      boolean chk = true;
-      for (int j = 2; j * j <= i; j++) {
-        if ((i % j) == 0) {
-          chk = false;
-          break;
+    // 소수구하기 - 에라토스테네스의 체
+    boolean[] chk = new boolean[max + 1]; // 소수를 담을 배열 - 소수의 경우 false
+    chk[0] = chk[1] = true;
+    for (int i = 2; i * i <= chk.length; i++) { // 제곱 배수로 소수를 찾는다
+      if (!chk[i]) { // 소수를 찾은 경우
+        for (int j = i + i; j < chk.length; j += i) {
+          chk[j] = true; // 위에서 찾은 소수의 배수는 소수가 아니므로 전부 true
         }
       }
-      if (chk == true) {
-        list.add(i);
-      }
     }
-    return list;
-  }
 
-  static int calc(ArrayList<Integer> list, int n) {
-    int rlt = 0;
-    for (int i = 0; i < list.size(); i++) {
-      int temp = list.get(i);
-      if (temp > n / 2) {
-        return rlt;
-      } else if (temp * 2 == n) {
-        rlt++;
-      } else if (list.contains((n - temp))) {
-        rlt++;
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < arr.length; i++) {
+      int rlt = 0;
+      for (int j = 2; j <= arr[i] / 2; j++) { // 중복 케이스 제거를 위해 절반만 시행
+        if (!chk[j] && !chk[arr[i] - j]) {
+          rlt++;
+        }
       }
+      sb.append(rlt + "\n");
     }
-    return rlt;
+    System.out.print(sb);
+    scanner.close();
   }
 }
