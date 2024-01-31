@@ -90,8 +90,14 @@ public class ClientApp {
       // JVM이 JDBC 드라이버 파일(.jar)에 설정된대로 자동으로 처리한다
 //      Driver driver = new com.mysql.cj.jdbc.Driver();
 //      DriverManager.registerDriver(driver);
-      Connection con = DriverManager.getConnection("jdbc:mysql://localhost/studydb", "study",
-          "1111");
+      // local DB
+//      Connection con = DriverManager.getConnection("jdbc:mysql://localhost/studydb", "study",
+//          "1111");
+
+      // Cloud DB
+      Connection con = DriverManager.getConnection(
+          "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
+          "Bitcamp123!@#");
 
       boardDao = new BoardDaoImpl(con, 1);
       greetingDao = new BoardDaoImpl(con, 2);
@@ -114,5 +120,4 @@ public class ClientApp {
       }
     }
   }
-
 }

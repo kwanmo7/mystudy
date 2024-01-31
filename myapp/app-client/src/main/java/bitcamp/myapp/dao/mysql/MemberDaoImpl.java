@@ -33,7 +33,7 @@ public class MemberDaoImpl implements MemberDao {
   public int delete(int no) {
     try {
       Statement stmt = connection.createStatement();
-      return stmt.executeUpdate("delete from members where =" + no);
+      return stmt.executeUpdate("delete from members where member_no=" + no);
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 중 오류", e);
     }
@@ -63,7 +63,7 @@ public class MemberDaoImpl implements MemberDao {
   public Member findBy(int no) {
     try {
       Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from members where =" + no);
+      ResultSet rs = stmt.executeQuery("select * from members where member_no=" + no);
       rs.next();
       Member member = new Member();
       member.setNo(rs.getInt("member_no"));

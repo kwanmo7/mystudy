@@ -47,7 +47,7 @@ insert into assignment(title,content,deadline)
 insert into assignment(title,content,deadline)
   values('과제5','내용5','2023-11-6');
 
-create table member(
+create table members(
   member_no int primary key auto_increment,
   email varchar(255) not null,
   name varchar(255) not null,
@@ -57,15 +57,15 @@ create table member(
 
 drop table member;
 
-insert into member(email,name,password)
+insert into members(email,name,password)
   values('이메일1','이름1','비밀번호1');
-insert into member(email,name,password)
+insert into members(email,name,password)
   values('이메일2','이름2','비밀번호2');
-insert into member(email,name,password)
+insert into members(email,name,password)
   values('이메일3','이름3','비밀번호3');
-insert into member(email,name,password)
+insert into members(email,name,password)
   values('이메일4','이름4','비밀번호4');
-insert into member(email,name,password)
+insert into members(email,name,password)
   values('이메일5','이름5','비밀번호5');
 
 alter table boards
