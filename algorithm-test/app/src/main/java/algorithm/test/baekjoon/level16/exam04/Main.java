@@ -1,6 +1,7 @@
 package algorithm.test.baekjoon.level16.exam04;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
   public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class Main {
       if (str.charAt(0) == '.') {
         break;
       }
+
       sb.append(chk(str) + "\n");
     }
     System.out.print(sb);
@@ -18,51 +20,26 @@ public class Main {
   }
 
   static String chk(String input) {
-    int smallchk = 0;
-    int bigchk = 0;
-
+    if (!input.endsWith(".")) {
+      return "no";
+    }
+    Stack<String> stack = new Stack<String>();
     for (int i = 0; i < input.length(); i++) {
-      char comp1 = 0;
-      char comp2 = 0;
-      if (i != 0 && i < input.length() - 2) {
-        comp1 = input.charAt(i - 1);
-        comp2 = input.charAt(i + 1);
-      }
-      if (input.charAt(i) == '(') {
-        if (i != 0 && i < (input.length() - 2)
-            && (comp1 != '(' || comp1 != ')' || comp2 != '[' || comp2 != ']') && comp1 != ' '
-            && comp2 != ' ') {
-          return "no";
-        }
-        smallchk++;
-      } else if (input.charAt(i) == ')') {
-        if (i != 0 && i < (input.length() - 2)
-            && (comp1 != '(' || comp1 != ')' || comp2 != '[' || comp2 != ']') && comp1 != ' '
-            && comp2 != ' ') {
-          return "no";
-        }
-        smallchk--;
-      } else if (input.charAt(i) == '[') {
-        if (i != 0 && i < (input.length() - 2)
-            && (comp1 != '(' || comp1 != ')' || comp2 != '[' || comp2 != ']') && comp1 != ' '
-            && comp2 != ' ') {
-          return "no";
-        }
-        bigchk++;
-      } else if (input.charAt(i) == ']') {
-        if (i != 0 && i < (input.length() - 2)
-            && (comp1 != '(' || comp1 != ')' || comp2 != '[' || comp2 != ']') && comp1 != ' '
-            && comp2 != ' ') {
-          return "no";
-        }
-        bigchk--;
-      }
-      if (smallchk < 0 || bigchk < 0) {
+      if (input.charAt(i) == '(' || input.charAt(i) == '[') {
+        stack.push(String.valueOf(input.charAt(i)));
+      } else if (stack.isEmpty() && (input.charAt(i) == ')' || input.charAt(i) == ']')) {
+        return "no";
+      } else if (!stack.isEmpty() && ((stack.peek().equals("(") && input.charAt(i) == ')')
+          || (stack.peek().equals("[") && input.charAt(i) == ']'))) {
+        stack.pop();
+      } else if (!stack.isEmpty() && ((stack.peek().equals("(") && input.charAt(i) == ']')
+          || (stack.peek().equals("[") && input.charAt(i) == ')'))) {
         return "no";
       }
     }
-    System.out.println(smallchk);
-    System.out.println(bigchk);
+    if (!stack.isEmpty()) {
+      return "no";
+    }
     return "yes";
   }
 }
