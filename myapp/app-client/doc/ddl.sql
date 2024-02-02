@@ -72,3 +72,74 @@ alter table boards
   add column category int not null;
 
 update boards set category=1;
+
+create table member(
+  member_no int primary key auto_increment,
+  name varchar(20) not null,
+  tel varchar(20) not null,
+  email varchar(30) not null,
+  entryDate date null default (CURRENT_DATE),
+  waterCd varchar(10) null,
+  electricCd varchar(10) null
+);
+
+create table waterPayMent(
+  no int primary key auto_increment,
+  srvCd varchar(10),
+  fee int not null,
+  constraint waterPayMent_uk unique key(srvCd)
+);
+
+create table electricPayMent(
+  no int primary key auto_increment,
+  srvCd varchar(10),
+  fee int not null,
+  constraint electricPayMent_uk unique key(srvCd)
+);
+
+create table usage(
+  no int primary key auto_increment,
+  waterUsage int,
+  electricUsage int,
+  usageYM varchar(6)
+);
+  
+
+create table usage_t(
+  no int primary key auto_increment,
+  waterUsage int,
+  electricUsage int,
+  usageYM varchar(6)
+);
+
+create table taxStub(
+  no int primary key auto_increment,
+  mem_no int,
+  taxStubYM varchar(6),
+  srvCdForWater varchar(10),
+  srvCdForElectric varchar(10),
+  usageWater int,
+  usageElectric int,
+  waterCost int,
+  electricCost int,
+  totalCost int
+);
+
+alter table taxStub
+    add constraint taxStub_mem_no_fk foreign key (mem_no) references member(member_no);
+
+alter table taxStub
+    add constraint taxStub_waterCd_fk foreign key (srvCdForWater) references waterPayMent(srvCd);
+
+alter table taxStub
+    add constraint taxStub_electricCd_fk foreign key (srvCdForElectric) references electricPayMent(srvCd);
+
+alter table taxStub
+    add constraint taxStub_fk foreign key (taxStubYM) references usage_t(usageYM);
+
+
+
+select t1.no wNo, t1.srvCd wCd, t1.fee wFee,t2.no eNo, t2.srvCd eCd, t2.fee eFee from waterPayMent t1 , electricPayMent t2;
+
+
+insert into taxStub(mem_no,taxStubYM,srvCdForWater,srvCdForElectric,usageWater,usageElectric,waterCost,electricCost,totalCost) values( 1,'202401','test2','test3',100,100,200,200,300 );

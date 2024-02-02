@@ -5,20 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenuHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/MenuGroup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/MenuHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/MenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/util/Prompt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Statement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/PaymentSysDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/TaxStubDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/UsageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/PaymentSysDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/TaxStubDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/UsageDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberUpdateHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysUpdateHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageUpdateHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/PaymentSys.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/TaxStub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Usage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/doc/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/util/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/util/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Statement.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +71,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -87,40 +110,40 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.QueueTest.executor": "Run",
-    "Application.StackTest.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.myapp [buildDependents].executor": "Run",
-    "Gradle.myapp [buildNeeded].executor": "Run",
-    "Gradle.myapp [build].executor": "Run",
-    "Gradle.myapp [clean].executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "Gradle.myapp:app [classes].executor": "Run",
-    "Gradle.myapp:app-api [build].executor": "Run",
-    "Gradle.myapp:app-client [build].executor": "Run",
-    "Gradle.myapp:app-client [run].executor": "Run",
-    "Gradle.myapp:app-common [build].executor": "Run",
-    "Gradle.myapp:app-server [build].executor": "Run",
-    "Gradle.myapp:app-server [clean].executor": "Run",
-    "Gradle.myapp:app-server [run].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp",
-    "last_opened_file_path": "C:/Users/kwanm/git/mystudy/tasks/task-1/settings.gradle",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.QueueTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-common [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kwanm/git/mystudy/tasks/task-1/settings.gradle&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\git\mystudy\myapp\app-client\src\main\java\bitcamp\myapp" />

@@ -11,6 +11,9 @@ public abstract class AbstractMenuHandler implements MenuHandler{
     this.prompt = prompt;
     this.menu = menu;
   }
+  public AbstractMenuHandler(Prompt prompt) {
+    this.prompt = prompt;
+  }
 
   @Override
   public void action(Menu menu) {

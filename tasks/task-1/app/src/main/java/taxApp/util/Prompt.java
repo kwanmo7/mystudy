@@ -2,6 +2,7 @@ package taxApp.util;
 
 import java.io.InputStream;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Prompt {
@@ -23,7 +24,6 @@ public class Prompt {
   public Date inputDate( String title, Object... args ){
     return Date.valueOf(input(title, args));
   }
-
   public void close(){
     this.keyin.close();
   }

@@ -3,12 +3,110 @@
  */
 package taxApp;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import taxApp.dao.MemberDao;
+import taxApp.dao.PaymentSysDao;
+import taxApp.dao.TaxStubDao;
+import taxApp.dao.UsageDao;
+import taxApp.dao.mysql.MemberDaoImpl;
+import taxApp.dao.mysql.PaymentSysDaoImpl;
+import taxApp.dao.mysql.TaxStubDaoImpl;
+import taxApp.dao.mysql.UsageDaoImpl;
+import taxApp.handler.member.MemberAddHandler;
+import taxApp.handler.member.MemberDeleteHandler;
+import taxApp.handler.member.MemberListHandler;
+import taxApp.handler.member.MemberUpdateHandler;
+import taxApp.handler.member.MemberViewHandler;
+import taxApp.handler.paymentSys.PaymentSysAddHandler;
+import taxApp.handler.paymentSys.PaymentSysDeleteHandler;
+import taxApp.handler.paymentSys.PaymentSysListHandler;
+import taxApp.handler.paymentSys.PaymentSysUpdateHandler;
+import taxApp.handler.taxStub.TaxStubAddHandler;
+import taxApp.handler.taxStub.TaxStubDeleteHandler;
+import taxApp.handler.taxStub.TaxStubListHandler;
+import taxApp.handler.taxStub.TaxStubUpdateHandler;
+import taxApp.handler.taxStub.TaxStubViewHandler;
+import taxApp.handler.usage.UsageAddHandler;
+import taxApp.handler.usage.UsageDeleteHandler;
+import taxApp.handler.usage.UsageListHandler;
+import taxApp.handler.usage.UsageUpdateHandler;
+import taxApp.handler.usage.UsageViewHandler;
+import taxApp.menu.MenuGroup;
+import taxApp.util.Prompt;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    Prompt prompt = new Prompt(System.in);
+
+    MemberDao memberDao;
+    PaymentSysDao paymentSysDao;
+    TaxStubDao taxStubDao;
+    UsageDao usageDao;
+    MenuGroup mainMenu;
+
+    App(){
+        prepareDatabase();
+        prepareMenu();
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        new App().run();
+    }
+
+    void prepareMenu(){
+        mainMenu = MenuGroup.getInstance("메인");
+        MenuGroup memberMenu = mainMenu.addGroup("회원 관리");
+        memberMenu.addItem("등록", new MemberAddHandler(prompt,memberDao));
+        memberMenu.addItem("조회", new MemberViewHandler(prompt,memberDao));
+        memberMenu.addItem("변경", new MemberUpdateHandler(prompt,memberDao));
+        memberMenu.addItem("삭제", new MemberDeleteHandler(prompt,memberDao));
+        memberMenu.addItem("목록", new MemberListHandler(prompt,memberDao));
+
+        MenuGroup paymentSysMenu = mainMenu.addGroup("요금제 관리");
+        paymentSysMenu.addItem("등록",new PaymentSysAddHandler(prompt,paymentSysDao));
+        paymentSysMenu.addItem("목록",new PaymentSysListHandler(prompt,paymentSysDao));
+        paymentSysMenu.addItem("변경",new PaymentSysUpdateHandler(prompt,paymentSysDao));
+        paymentSysMenu.addItem("삭제",new PaymentSysDeleteHandler(prompt,paymentSysDao));
+        
+        MenuGroup usageMenu = mainMenu.addGroup("사용량 관리");
+        usageMenu.addItem("등록",new UsageAddHandler(prompt,usageDao));
+        usageMenu.addItem("조회",new UsageViewHandler(prompt,usageDao));
+        usageMenu.addItem("변경",new UsageUpdateHandler(prompt,usageDao));
+        usageMenu.addItem("삭제",new UsageDeleteHandler(prompt,usageDao));
+        usageMenu.addItem("목록",new UsageListHandler(prompt,usageDao));
+
+        MenuGroup taxStubMenu = mainMenu.addGroup("명세서 관리");
+        taxStubMenu.addItem("등록",
+            new TaxStubAddHandler(prompt,taxStubDao,usageDao,memberDao,paymentSysDao));
+        taxStubMenu.addItem("조회",new TaxStubViewHandler(prompt,taxStubDao));
+        taxStubMenu.addItem("갱신",
+            new TaxStubUpdateHandler(prompt,taxStubDao,usageDao,memberDao,paymentSysDao));
+        taxStubMenu.addItem("삭제",new TaxStubDeleteHandler(prompt,taxStubDao));
+        taxStubMenu.addItem("목록",new TaxStubListHandler(prompt,taxStubDao));
+    }
+
+    void prepareDatabase(){
+        try {
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/tasks", "study",
+                "Bitcamp123!@#");
+            memberDao = new MemberDaoImpl(con);
+            paymentSysDao = new PaymentSysDaoImpl(con);
+            usageDao = new UsageDaoImpl(con);
+            taxStubDao = new TaxStubDaoImpl(con);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    void run(){
+        while(true){
+            try{
+                mainMenu.execute(prompt);
+                prompt.close();
+                break;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
