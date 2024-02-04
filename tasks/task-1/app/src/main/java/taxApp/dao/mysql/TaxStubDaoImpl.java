@@ -101,7 +101,7 @@ public class TaxStubDaoImpl implements TaxStubDao {
   public TaxStub findBy(int no, String date) {
     try{
       Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from taxStub where no="+no+" and taxStubYM = '"+date+"'");
+      ResultSet rs = stmt.executeQuery("select * from taxStub where mem_no="+no+" and taxStubYM = '"+date+"'");
       rs.next();
       TaxStub taxStub = new TaxStub();
       taxStub.setTaxStub_no(rs.getInt("no"));
@@ -125,10 +125,15 @@ public class TaxStubDaoImpl implements TaxStubDao {
     try{
       Statement stmt = connection.createStatement();
       StringBuilder sb = new StringBuilder();
-      sb.append("update taxStub set srvCdFoeWater = '"+taxStub.getWaterCd()+"', srvCdForElectric = '"+taxStub.getElectricCd()+"', usageWater = "+taxStub.getUsageWater()+""
-          + ", usageElectric = "+taxStub.getUsageElectric()+" , waterCost = "+taxStub.getWaterCost()+" , electricCost = "+taxStub.getElectricCost()+" , totalCost = "+taxStub.getTotalCost()+" "
-          + "where mem_no = "+taxStub.getMem_no()+" and taxStubYM = '"+taxStub.getTaxStub_date()+"'");
-      System.out.println(sb);
+      sb.append("update taxStub set srvCdForWater = '").append(taxStub.getWaterCd())
+          .append("', srvCdForElectric = '").append(taxStub.getElectricCd())
+          .append("', usageWater = ").append(taxStub.getUsageWater()).append(", usageElectric = ")
+          .append(taxStub.getUsageElectric()).append(" , waterCost = ")
+          .append(taxStub.getWaterCost()).append(" , electricCost = ")
+          .append(taxStub.getElectricCost()).append(" , totalCost = ")
+          .append(taxStub.getTotalCost()).append(" ").append("where mem_no = ")
+          .append(taxStub.getMem_no()).append(" and taxStubYM = '")
+          .append(taxStub.getTaxStub_date()).append("'");
       return stmt.executeUpdate(String.valueOf(sb));
       /*
       * String.format(

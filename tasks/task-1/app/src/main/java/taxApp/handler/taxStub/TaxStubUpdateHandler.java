@@ -41,17 +41,18 @@ public class TaxStubUpdateHandler extends AbstractMenuHandler {
       Member member = memberDao.findBy(no);
       Usage usage = usageDao.findBy(no,date);
       List<PaymentSys> paymentSysList = paymentSysDao.findAll();
+      taxStub.setWaterCd(member.getWaterCd());
       taxStub.setElectricCd(member.getElectricCd());
       taxStub.setUsageWater(usage.getWaterUsage());
       taxStub.setUsageElectric(usage.getElectricUsage());
       int feeWater = 0;
       int feeElectric = 0;
-      for( int i = 0; i < paymentSysList.size(); i++ ){
-        if( member.getWaterCd().equals(paymentSysList.get(i).getSrvCdForWater()) ){
-          feeWater = paymentSysList.get(i).getFeeForWater();
+      for (PaymentSys paymentSys : paymentSysList) {
+        if (member.getWaterCd().equals(paymentSys.getSrvCdForWater())) {
+          feeWater = paymentSys.getFeeForWater();
         }
-        if( member.getElectricCd().equals(paymentSysList.get(i).getSrvCdForElectric()) ){
-          feeElectric = paymentSysList.get(i).getFeeForElectric();
+        if (member.getElectricCd().equals(paymentSys.getSrvCdForElectric())) {
+          feeElectric = paymentSys.getFeeForElectric();
         }
       }
       feeWater = ((feeWater * usage.getWaterUsage())/1000);
