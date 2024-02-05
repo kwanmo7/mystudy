@@ -45,8 +45,8 @@ public class TaxStubUpdateHandler extends AbstractMenuHandler {
       taxStub.setElectricCd(member.getElectricCd());
       taxStub.setUsageWater(usage.getWaterUsage());
       taxStub.setUsageElectric(usage.getElectricUsage());
-      int feeWater = 0;
-      int feeElectric = 0;
+      int feeWater = 100;
+      int feeElectric = 100;
       for (PaymentSys paymentSys : paymentSysList) {
         if (member.getWaterCd().equals(paymentSys.getSrvCdForWater())) {
           feeWater = paymentSys.getFeeForWater();
@@ -55,8 +55,8 @@ public class TaxStubUpdateHandler extends AbstractMenuHandler {
           feeElectric = paymentSys.getFeeForElectric();
         }
       }
-      feeWater = ((feeWater * usage.getWaterUsage())/1000);
-      feeElectric = ((feeElectric * usage.getElectricUsage())/1000);
+      feeWater = ((feeWater * usage.getWaterUsage()));
+      feeElectric = ((feeElectric * usage.getElectricUsage()));
       taxStub.setWaterCost(feeWater);
       taxStub.setElectricCost(feeElectric);
       int total = feeWater+feeElectric;

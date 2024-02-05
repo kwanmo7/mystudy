@@ -5,38 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/MemberDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/PaymentSysDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/TaxStubDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/UsageDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/PaymentSysDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/TaxStubDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/dao/mysql/UsageDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberUpdateHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/member/MemberViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/paymentSys/PaymentSysUpdateHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageUpdateHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/usage/UsageViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/PaymentSys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/TaxStub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Usage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/doc/ddl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/menu/AbstractMenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/util/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/util/Prompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/vo/Statement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/taxStub/TaxStubUpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/task-1/app/src/main/java/taxApp/handler/taxStub/TaxStubUpdateHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
