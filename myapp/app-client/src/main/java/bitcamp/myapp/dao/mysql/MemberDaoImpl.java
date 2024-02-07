@@ -4,8 +4,8 @@ import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +19,12 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public void add(Member member) {
-    try {
-      Statement stmt = connection.createStatement();
-      stmt.executeUpdate(
-          String.format("insert into members(email,name,password) values('%s','%s',sha2('%s',256))",
-              member.getEmail(), member.getName(), member.getPassword()));
+    try (PreparedStatement pstmt = connection.prepareStatement(
+        "insert into members(email,name,password) values(?,?,sha2(?,256))")) {
+      pstmt.setString(1, member.getEmail());
+      pstmt.setString(2, member.getName());
+      pstmt.setString(3, member.getPassword());
+      pstmt.executeUpdate();
     } catch (Exception e) {
       throw new DaoException("데이터 등록 중 오류", e);
     }
@@ -31,9 +32,10 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int delete(int no) {
-    try {
-      Statement stmt = connection.createStatement();
-      return stmt.executeUpdate("delete from members where member_no=" + no);
+    try (PreparedStatement pstmt = connection.prepareStatement(
+        "delete from members where member_no=?")) {
+      pstmt.setInt(1, no);
+      return pstmt.executeUpdate();
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 중 오류", e);
     }
@@ -41,9 +43,9 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() {
-    try {
-      Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from members");
+    try (PreparedStatement pstmt = connection.prepareStatement(
+        "select * from members order by member_no");
+        ResultSet rs = pstmt.executeQuery()) {
       ArrayList<Member> list = new ArrayList<>();
       while (rs.next()) {
         Member member = new Member();
@@ -61,16 +63,20 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public Member findBy(int no) {
-    try {
-      Statement stmt = connection.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from members where member_no=" + no);
-      rs.next();
-      Member member = new Member();
-      member.setNo(rs.getInt("member_no"));
-      member.setName(rs.getString("name"));
-      member.setEmail(rs.getString("email"));
-      member.setCreatedDate(rs.getDate("created_data"));
-      return member;
+    try (PreparedStatement pstmt = connection.prepareStatement(
+        "select * from members where member_no=?")) {
+      pstmt.setInt(1, no);
+      try (ResultSet rs = pstmt.executeQuery()) {
+        if (rs.next()) {
+          Member member = new Member();
+          member.setNo(rs.getInt("member_no"));
+          member.setName(rs.getString("name"));
+          member.setEmail(rs.getString("email"));
+          member.setCreatedDate(rs.getDate("created_date"));
+          return member;
+        }
+        return null;
+      }
     } catch (Exception e) {
       throw new DaoException("데이터 조회 중 오류", e);
     }
@@ -78,24 +84,15 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int update(Member member) {
-    try {
-      Statement stmt = connection.createStatement();
-      return stmt.executeUpdate(
-          String.format("update members set email = '%s', name = '%s', password = sha2('%s',256)",
-              member.getEmail(), member.getName(), member.getPassword()));
+    try (PreparedStatement pstmt = connection.prepareStatement(
+        "update members set email = ?, name = ?, password = sha2(?,256) where member_no =?")) {
+      pstmt.setString(1, member.getEmail());
+      pstmt.setString(2, member.getName());
+      pstmt.setString(3, member.getPassword());
+      pstmt.setInt(4, member.getNo());
+      return pstmt.executeUpdate();
     } catch (Exception e) {
       throw new DaoException("데이터 갱신 중 오류", e);
     }
   }
-
-//  public String encrypt(String text, ResultSet rs) throws NoSuchAlgorithmException, SQLException {
-//    MessageDigest md = MessageDigest.getInstance("SHA-256");
-//    md.update(rs.getString("password").getBytes());
-//    byte[] bytes = md.digest();
-//    StringBuilder sb = new StringBuilder();
-//    for (byte b : bytes) {
-//      sb.append(String.format("%02x", b));
-//    }
-//    return sb.toString();
-//  }
 }
