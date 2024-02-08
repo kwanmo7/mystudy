@@ -23,16 +23,16 @@ public class Main {
       int k = hm.get(temp);
       sb.append(temp + " ");
       if (k > 0) {
-        for (int j = 0; j < k; j++) {
+        deque.remove(temp); // 오른쪽 이동의 경우 값을 하나 없앤 시점에서 오른쪽으로 한칸 이동한 것과 같다
+        for (int j = 1; j < k; j++) {
           deque.offer(deque.poll());
         }
-        deque.remove(temp);
         temp = deque.peek();
       } else {
+        deque.remove(temp);
         for (int j = 0; j > k; j--) {
           deque.offerFirst(deque.pollLast());
         }
-        deque.remove(temp);
         temp = deque.peek();
       }
     }
@@ -41,4 +41,3 @@ public class Main {
     scanner.close();
   }
 }
-// 반례 - https://www.acmicpc.net/board/view/127751
