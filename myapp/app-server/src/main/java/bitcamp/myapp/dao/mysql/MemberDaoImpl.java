@@ -3,6 +3,7 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import bitcamp.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,20 +12,24 @@ import java.util.List;
 
 public class MemberDaoImpl implements MemberDao {
 
-  Connection connection;
+  DBConnectionPool threadConnection;
 
-  public MemberDaoImpl(Connection connection) {
-    this.connection = connection;
+  public MemberDaoImpl(DBConnectionPool threadConnection) {
+    this.threadConnection = threadConnection;
   }
 
   @Override
   public void add(Member member) {
-    try (PreparedStatement pstmt = connection.prepareStatement(
-        "insert into members(email,name,password) values(?,?,sha2(?,256))")) {
-      pstmt.setString(1, member.getEmail());
-      pstmt.setString(2, member.getName());
-      pstmt.setString(3, member.getPassword());
-      pstmt.executeUpdate();
+    Connection connection = null;
+    try {
+      connection = threadConnection.getConnection();
+      try (PreparedStatement pstmt = connection.prepareStatement(
+          "insert into members(email,name,password) values(?,?,sha2(?,256))")) {
+        pstmt.setString(1, member.getEmail());
+        pstmt.setString(2, member.getName());
+        pstmt.setString(3, member.getPassword());
+        pstmt.executeUpdate();
+      }
     } catch (Exception e) {
       throw new DaoException("데이터 등록 중 오류", e);
     }
@@ -32,10 +37,14 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int delete(int no) {
-    try (PreparedStatement pstmt = connection.prepareStatement(
-        "delete from members where member_no=?")) {
-      pstmt.setInt(1, no);
-      return pstmt.executeUpdate();
+    Connection connection = null;
+    try {
+      connection = threadConnection.getConnection();
+      try (PreparedStatement pstmt = connection.prepareStatement(
+          "delete from members where member_no=?")) {
+        pstmt.setInt(1, no);
+        return pstmt.executeUpdate();
+      }
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 중 오류", e);
     }
@@ -43,19 +52,23 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() {
-    try (PreparedStatement pstmt = connection.prepareStatement(
-        "select * from members order by member_no");
-        ResultSet rs = pstmt.executeQuery()) {
-      ArrayList<Member> list = new ArrayList<>();
-      while (rs.next()) {
-        Member member = new Member();
-        member.setNo(rs.getInt("member_no"));
-        member.setName(rs.getString("name"));
-        member.setEmail(rs.getString("email"));
-        member.setCreatedDate(rs.getDate("created_date"));
-        list.add(member);
+    Connection connection = null;
+    try {
+      connection = threadConnection.getConnection();
+      try (PreparedStatement pstmt = connection.prepareStatement(
+          "select * from members order by member_no");
+          ResultSet rs = pstmt.executeQuery()) {
+        ArrayList<Member> list = new ArrayList<>();
+        while (rs.next()) {
+          Member member = new Member();
+          member.setNo(rs.getInt("member_no"));
+          member.setName(rs.getString("name"));
+          member.setEmail(rs.getString("email"));
+          member.setCreatedDate(rs.getDate("created_date"));
+          list.add(member);
+        }
+        return list;
       }
-      return list;
     } catch (Exception e) {
       throw new DaoException("데이터 조회 중 오류", e);
     }
@@ -63,19 +76,23 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public Member findBy(int no) {
-    try (PreparedStatement pstmt = connection.prepareStatement(
-        "select * from members where member_no=?")) {
-      pstmt.setInt(1, no);
-      try (ResultSet rs = pstmt.executeQuery()) {
-        if (rs.next()) {
-          Member member = new Member();
-          member.setNo(rs.getInt("member_no"));
-          member.setName(rs.getString("name"));
-          member.setEmail(rs.getString("email"));
-          member.setCreatedDate(rs.getDate("created_date"));
-          return member;
+    Connection connection = null;
+    try {
+      connection = threadConnection.getConnection();
+      try (PreparedStatement pstmt = connection.prepareStatement(
+          "select * from members where member_no=?")) {
+        pstmt.setInt(1, no);
+        try (ResultSet rs = pstmt.executeQuery()) {
+          if (rs.next()) {
+            Member member = new Member();
+            member.setNo(rs.getInt("member_no"));
+            member.setName(rs.getString("name"));
+            member.setEmail(rs.getString("email"));
+            member.setCreatedDate(rs.getDate("created_date"));
+            return member;
+          }
+          return null;
         }
-        return null;
       }
     } catch (Exception e) {
       throw new DaoException("데이터 조회 중 오류", e);
@@ -84,13 +101,17 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int update(Member member) {
-    try (PreparedStatement pstmt = connection.prepareStatement(
-        "update members set email = ?, name = ?, password = sha2(?,256) where member_no =?")) {
-      pstmt.setString(1, member.getEmail());
-      pstmt.setString(2, member.getName());
-      pstmt.setString(3, member.getPassword());
-      pstmt.setInt(4, member.getNo());
-      return pstmt.executeUpdate();
+    Connection connection = null;
+    try {
+      connection = threadConnection.getConnection();
+      try (PreparedStatement pstmt = connection.prepareStatement(
+          "update members set email = ?, name = ?, password = sha2(?,256) where member_no =?")) {
+        pstmt.setString(1, member.getEmail());
+        pstmt.setString(2, member.getName());
+        pstmt.setString(3, member.getPassword());
+        pstmt.setInt(4, member.getNo());
+        return pstmt.executeUpdate();
+      }
     } catch (Exception e) {
       throw new DaoException("데이터 갱신 중 오류", e);
     }
