@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBConnectionPool {
+public class DBConnectionPool implements ConnectionPool {
 
   // 개별 스레드용 DB 커넥션 저장소
   private static final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
@@ -29,7 +29,7 @@ public class DBConnectionPool {
         con = connections.remove(0);
         System.out.printf("%s : DB 커넥션풀에서 꺼냄\n", Thread.currentThread().getName());
       } else {
-        con = DriverManager.getConnection(jdbcUrl, username, password);
+        con = new ConnectionProxy(DriverManager.getConnection(jdbcUrl, username, password), this);
         System.out.printf("%s : DB 커넥션 생성\n", Thread.currentThread().getName());
       }
       connectionThreadLocal.set(con);
@@ -43,5 +43,11 @@ public class DBConnectionPool {
     connectionThreadLocal.remove();
     connections.add(con);
     System.out.printf("%s : DB 커넥션 반환\n", Thread.currentThread().getName());
+  }
+
+  public void closeAll() {
+    for (Connection connection : connections) {
+      ((ConnectionProxy) connection).realClose();
+    }
   }
 }

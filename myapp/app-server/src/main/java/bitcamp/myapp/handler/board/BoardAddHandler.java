@@ -1,22 +1,28 @@
 package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
+import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
-import java.sql.Connection;
+import bitcamp.util.TransactionManager;
+import java.util.ArrayList;
+import java.util.List;
 
 // 게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 // - 반드시 MenuHandler 규칙에 따라 클래스를 작성
 public class BoardAddHandler extends AbstractMenuHandler {
 
-  DBConnectionPool connectionPool;
+  private TransactionManager txManager;
   private BoardDao boardDao;
+  private AttachedFileDao attachedFileDao;
 
-  public BoardAddHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
-    this.connectionPool = connectionPool;
+  public BoardAddHandler(TransactionManager txManager, BoardDao boardDao,
+      AttachedFileDao attachedFileDao) {
+    this.txManager = txManager;
     this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
   }
 
   @Override
@@ -28,25 +34,28 @@ public class BoardAddHandler extends AbstractMenuHandler {
     board.setContent(prompt.input("내용? "));
     board.setWriter(prompt.input("작성자? "));
 
-    Connection connection = null;
+    List<AttachedFile> files = new ArrayList<>();
+    while (true) {
+      String filepath = prompt.input("파일?(종료 : 그냥 엔터)");
+      if (filepath.length() == 0) {
+        break;
+      }
+      files.add(new AttachedFile().filePath(filepath));
+    }
     try {
-      connection = connectionPool.getConnection();
-      connection.setAutoCommit(false);
+      txManager.startTransaction();
       boardDao.add(board);
-
-      connection.commit();
+      if (files.size() > 0) {
+        files.forEach(file -> file.setBoardNo(board.getNo()));
+        attachedFileDao.addAll(files);
+      }
+      txManager.commit();
     } catch (Exception e) {
       try {
-        connection.rollback();
+        txManager.rollback();
       } catch (Exception e2) {
       }
-    } finally {
-      try {
-        connection.setAutoCommit(true);
-      } catch (Exception e) {
-        connectionPool.returnConnection(connection);
-      }
+      prompt.println("게시글 등록 오류!");
     }
-
   }
 }

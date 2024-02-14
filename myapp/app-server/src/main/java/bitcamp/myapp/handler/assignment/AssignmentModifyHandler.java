@@ -3,25 +3,19 @@ package bitcamp.myapp.handler.assignment;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
-import java.sql.Connection;
 
 public class AssignmentModifyHandler extends AbstractMenuHandler {
 
-  private DBConnectionPool connectionPool;
   private AssignmentDao assignmentDao;
 
-  public AssignmentModifyHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
-    this.connectionPool = connectionPool;
+  public AssignmentModifyHandler(AssignmentDao assignmentDao) {
     this.assignmentDao = assignmentDao;
   }
 
   @Override
   protected void action(Prompt prompt) {
-    Connection connection = null;
     try {
-      connection = connectionPool.getConnection();
       int no = prompt.inputInt("번호? ");
       Assignment old = assignmentDao.findBy(no);
       Assignment assignment = new Assignment();
@@ -39,8 +33,6 @@ public class AssignmentModifyHandler extends AbstractMenuHandler {
       prompt.println("다시 시도 하세요.");
     } catch (Exception e) {
       prompt.println("실행 오류");
-    } finally {
-      connectionPool.returnConnection(connection);
     }
   }
 }
