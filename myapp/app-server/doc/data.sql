@@ -1,14 +1,14 @@
 -- boards 테이블 데이터
 insert into boards(board_no,title,content,writer,category)
-  values(1,'제목1','내용1','홍길동',1);
+  values(1,'제목1','내용1',101,1);
 insert into boards(board_no,title,content,writer,category)
-  values(2,'제목2','내용2','임꺽정',1);
+  values(2,'제목2','내용2',102,1);
 insert into boards(board_no,title,content,writer,category)
-  values(3,'제목3','내용3','유관순',2);
+  values(3,'제목3','내용3',102,2);
 insert into boards(board_no,title,content,writer,category)
-  values(4,'제목4','내용4','안중근',2);
+  values(4,'제목4','내용4',104,2);
 insert into boards(board_no,title,content,writer,category)
-  values(5,'제목5','내용5','윤봉길',2);
+  values(5,'제목5','내용5',104,2);
 
 -- board_files 테이블 데이터
 insert into board_files(file_no,file_path,board_no)
@@ -30,13 +30,13 @@ insert into assignments(title,content,deadline)
   values('과제5','내용5','2023-11-6');
 
 -- members 테이블 데이터
-insert into members(email,name,password)
-  values('이메일1','이름1','비밀번호1');
-insert into members(email,name,password)
-  values('이메일2','이름2','비밀번호2');
-insert into members(email,name,password)
-  values('이메일3','이름3','비밀번호3');
-insert into members(email,name,password)
-  values('이메일4','이름4','비밀번호4');
-insert into members(email,name,password)
-  values('이메일5','이름5','비밀번호5');
+insert into members(member_no,email,name,password,created_date)
+  values(101,'이메일1','이름1',sha2('1111',256),'2024-01-01');
+insert into members(member_no,email,name,password,created_date)
+  values(102,'이메일2','이름2',sha2('1111',256),'2024-02-01');
+insert into members(member_no,email,name,password,created_date)
+  values(103,'이메일3','이름3',sha2('1111',256),'2024-03-01');
+insert into members(member_no,email,name,password,created_date)
+  values(104,'이메일4','이름4',sha2('1111',256),'2024-04-01');
+insert into members(member_no,email,name,password,created_date)
+  values(105,'이메일5','이름5',sha2('1111',256),'2024-05-01');

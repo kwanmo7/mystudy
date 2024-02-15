@@ -101,4 +101,46 @@ public class MemberDaoImpl implements MemberDao {
       throw new DaoException("데이터 갱신 중 오류", e);
     }
   }
+
+  @Override
+  public Member findByEmailAndPassword(String email, String password) {
+    try (Connection connection = threadConnection.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(
+            "select member_no, email, name, created_date "
+                + "from members where email = ? and password = sha2(?,256)")) {
+      pstmt.setString(1, email);
+      pstmt.setString(2, password);
+      try (ResultSet rs = pstmt.executeQuery()) {
+        if (rs.next()) {
+          Member member = new Member();
+          member.setNo(rs.getInt("member_no"));
+          member.setName(rs.getString("name"));
+          member.setEmail(rs.getString("email"));
+          member.setCreatedDate(rs.getDate("created_date"));
+          return member;
+        }
+        return null;
+      }
+    } catch (Exception e) {
+      throw new DaoException("데이터 조회 중 오류", e);
+    }
+  }
+
+  public int findByName(String name) {
+    try (Connection connection = threadConnection.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(
+            "select member_no from members where name=?")) {
+      pstmt.setString(1, name);
+      try (ResultSet rs = pstmt.executeQuery()) {
+        if (rs.next()) {
+          Member member = new Member();
+          member.setNo(rs.getInt("member_no"));
+          return member.getNo();
+        }
+        return 0;
+      }
+    } catch (Exception e) {
+      throw new DaoException("데이터 조회 중 오류", e);
+    }
+  }
 }

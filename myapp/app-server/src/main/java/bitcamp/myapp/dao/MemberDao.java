@@ -15,4 +15,7 @@ public interface MemberDao {
 
   int update(Member member);
 
+  Member findByEmailAndPassword(String email, String password);
+
+  int findByName(String name);
 }
