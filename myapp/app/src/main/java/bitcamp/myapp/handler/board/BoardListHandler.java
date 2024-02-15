@@ -12,22 +12,22 @@ public class BoardListHandler extends AbstractMenuHandler {
 
   private BoardDao boardDao;
 
-  public BoardListHandler(BoardDao boardDao, Prompt prompt) {
-    super(prompt);
+  public BoardListHandler(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
 
   @Override
-  protected void action() {
-    System.out.printf("%-4s\t%-20s\t%10s\t%s\n", "No", "Title", "Writer", "Date");
-    List<Board> list = boardDao.findAll();
-    list.forEach(item -> System.out.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\n", item.getNo(),
-        item.getTitle(),
-        item.getWriter(), item.getCreatedDate()));
-//    for (Board board : list) {
-//      System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n", board.getTitle(),
-//          board.getWriter(),
-//          board.getCreatedDate());
-//    }
+  protected void action(Prompt prompt) {
+    try {
+      prompt.printf("%-4s\t%-20s\t%10s\t%s\t%s\n", "No", "Title", "Writer", "Date", "Files");
+      List<Board> list = boardDao.findAll();
+      list.forEach(
+          item -> prompt.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\t%5$d\n",
+              item.getNo(), item.getTitle(), item.getWriter(),
+              item.getCreatedDate(), item.getFileCount()));
+    } catch (Exception e) {
+      prompt.println("조회 오류");
+      e.printStackTrace();
+    }
   }
 }

@@ -4,24 +4,36 @@ import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import java.util.Date;
+import bitcamp.util.TransactionManager;
 
 public class MemberAddHandler extends AbstractMenuHandler {
 
+  private TransactionManager txManager;
   private MemberDao memberDao;
 
-  public MemberAddHandler(MemberDao memberDao, Prompt prompt) {
-    super(prompt);
+  public MemberAddHandler(TransactionManager txManager, MemberDao memberDao) {
+    this.txManager = txManager;
     this.memberDao = memberDao;
   }
 
   @Override
-  protected void action() {
-    Member member = new Member();
-    member.setEmail(this.prompt.input("이메일? "));
-    member.setName(this.prompt.input("이름? "));
-    member.setPassword(this.prompt.input("암호? "));
-    member.setCreatedDate(new Date());
-    memberDao.add(member);
+  protected void action(Prompt prompt) {
+    try {
+      txManager.startTransaction();
+
+      Member member = new Member();
+      member.setEmail(prompt.input("이메일? "));
+      member.setName(prompt.input("이름? "));
+      member.setPassword(prompt.input("암호? "));
+
+      memberDao.add(member);
+      txManager.commit();
+    } catch (Exception e) {
+      try {
+        txManager.rollback();
+        prompt.println("등록 오류");
+      } catch (Exception e2) {
+      }
+    }
   }
 }
