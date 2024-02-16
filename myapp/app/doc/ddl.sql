@@ -54,8 +54,3 @@ alter table members
 
 alter table boards
   add constraint boards_fk foreign key(writer) references members(member_no);
-select b.board_no,b.title,b.created_date,count(file_no) file_count,m.member_no,m.name
- from boards b left outer join board_files bf on b.board_no = bf.board_no inner join members m on b.writer=m.member_no
-where b.category=1
-group by b.board_no
-order by b.board_no desc

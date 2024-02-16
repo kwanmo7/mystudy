@@ -38,6 +38,7 @@ public class BoardListServlet extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시글</h1>");
+    out.println("<a href='/board/form.html'>새 글</a>");
     try {
       out.println("<table border='1'>");
       out.println("<thead>");
@@ -47,7 +48,7 @@ public class BoardListServlet extends GenericServlet {
       List<Board> list = boardDao.findAll();
       list.forEach(
           item -> out.printf(
-              "<tr> <td>%d</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>",
+              "<tr> <td>%d</td> <td><a href='/board/view?no=%1$d'>%s</td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>",
               item.getNo(), item.getTitle(), item.getWriter().getName(),
               item.getCreatedDate(), item.getFileCount()));
       out.println("</tbody>");

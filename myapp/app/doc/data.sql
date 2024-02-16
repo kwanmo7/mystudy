@@ -17,6 +17,9 @@ insert into board_files(file_no,file_path,board_no)
   (6,'c1.git',4),(7,'c2.gif',4),(8,'c3.git',4),(9,'c4.git',4),
   (10,'d1.gif',5);
 
+insert into board_files(file_no,file_path,board_no)
+  values (15,'aaa.gif',2),(16,'aaab.gif',2),(17,'aaac.gif',2)
+
 -- assignment 테이블 데이터
 insert into assignments(title,content,deadline)
   values('과제1','내용1','2023-11-2');
@@ -31,12 +34,12 @@ insert into assignments(title,content,deadline)
 
 -- members 테이블 데이터
 insert into members(member_no,email,name,password,created_date)
-  values(101,'이메일1','이름1',sha2('1111',256),'2024-01-01');
+  values(101,'user1@test.com','이름1',sha2('1111',256),'2024-01-01');
 insert into members(member_no,email,name,password,created_date)
-  values(102,'이메일2','이름2',sha2('1111',256),'2024-02-01');
+  values(102,'user2@test.com','이름2',sha2('1111',256),'2024-02-01');
 insert into members(member_no,email,name,password,created_date)
-  values(103,'이메일3','이름3',sha2('1111',256),'2024-03-01');
+  values(103,'user3@test.com','이름3',sha2('1111',256),'2024-03-01');
 insert into members(member_no,email,name,password,created_date)
-  values(104,'이메일4','이름4',sha2('1111',256),'2024-04-01');
+  values(104,'user4@test.com','이름4',sha2('1111',256),'2024-04-01');
 insert into members(member_no,email,name,password,created_date)
-  values(105,'이메일5','이름5',sha2('1111',256),'2024-05-01');
+  values(105,'user5@test.com','이름5',sha2('1111',256),'2024-05-01');
