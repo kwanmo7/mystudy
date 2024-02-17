@@ -22,7 +22,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public void add(Assignment assignment) {
     try (Connection connection = connectionPool.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
-            "insert into assignment(title,content,deadline) values(?,?,?)")) {
+            "insert into assignments(title,content,deadline) values(?,?,?)")) {
 
       pstmt.setString(1, assignment.getTitle());
       pstmt.setString(2, assignment.getContent());
@@ -38,7 +38,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public int delete(int no) {
     try (Connection connection = connectionPool.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
-            "delete from assignment where assignment_no = ?")) {
+            "delete from assignments where assignment_no = ?")) {
       pstmt.setInt(1, no);
       return pstmt.executeUpdate();
 
@@ -51,7 +51,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public List<Assignment> findAll() {
     try (Connection connection = connectionPool.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
-            "select * from assignment order by assignment_no desc");
+            "select * from assignments order by assignment_no asc");
         ResultSet rs = pstmt.executeQuery()) {
       ArrayList<Assignment> list = new ArrayList<>();
       while (rs.next()) {
@@ -71,7 +71,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public Assignment findBy(int no) {
     try (Connection connection = connectionPool.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
-            "select * from assignment where assignment_no =?")) {
+            "select * from assignments where assignment_no =?")) {
       pstmt.setInt(1, no);
       try (ResultSet rs = pstmt.executeQuery()) {
         if (rs.next()) {
@@ -93,7 +93,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public int update(Assignment assignment) {
     try (Connection connection = connectionPool.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
-            "update assignment set title = ?, content = ?, deadline = ? where assignment_no = ?")) {
+            "update assignments set title = ?, content = ?, deadline = ? where assignment_no = ?")) {
       pstmt.setString(1, assignment.getTitle());
       pstmt.setString(2, assignment.getContent());
       pstmt.setDate(3, assignment.getDeadline());
