@@ -14,11 +14,9 @@ import java.util.List;
 public class BoardDaoImpl implements BoardDao {
 
   DBConnectionPool threadConnection;
-  int category;
 
-  public BoardDaoImpl(DBConnectionPool threadConnection, int category) {
+  public BoardDaoImpl(DBConnectionPool threadConnection) {
     this.threadConnection = threadConnection;
-    this.category = category;
   }
 
   @Override
@@ -30,7 +28,7 @@ public class BoardDaoImpl implements BoardDao {
       pstmt.setString(1, board.getTitle());
       pstmt.setString(2, board.getContent());
       pstmt.setInt(3, board.getWriter().getNo());
-      pstmt.setInt(4, this.category);
+      pstmt.setInt(4, board.getCategory());
 
       pstmt.executeUpdate();
       // 자동 생성된 PK값을 가져와서 Board객체에 저장
@@ -58,7 +56,7 @@ public class BoardDaoImpl implements BoardDao {
   }
 
   @Override
-  public List<Board> findAll() {
+  public List<Board> findAll(int category) {
     try (Connection connection = threadConnection.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(
             "select\n"
@@ -75,7 +73,7 @@ public class BoardDaoImpl implements BoardDao {
                 + " board_no\n"
                 + "order by\n"
                 + " board_no desc")) {
-      pstmt.setInt(1, this.category);
+      pstmt.setInt(1, category);
       try (ResultSet rs = pstmt.executeQuery()) {
         ArrayList<Board> list = new ArrayList<>();
         while (rs.next()) {

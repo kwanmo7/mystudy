@@ -1,12 +1,7 @@
 package bitcamp.myapp.servlet.assignment;
 
-import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Board;
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.Prompt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,11 +15,9 @@ public class AssignmentViewServlet extends HttpServlet {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentViewServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+  @Override
+  public void init() throws ServletException {
+    this.assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
   }
 
   @Override

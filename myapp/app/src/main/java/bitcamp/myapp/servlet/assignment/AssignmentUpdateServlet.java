@@ -1,22 +1,12 @@
 package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +19,10 @@ public class AssignmentUpdateServlet extends HttpServlet {
   private TransactionManager txManager;
   private AssignmentDao assignmentDao;
 
-  public AssignmentUpdateServlet() {
-    DBConnectionPool dbConnectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    txManager = new TransactionManager(dbConnectionPool);
-    assignmentDao = new AssignmentDaoImpl(dbConnectionPool);
+  @Override
+  public void init() throws ServletException {
+    this.assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
+    this.txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
   }
 
   @Override
@@ -64,7 +52,7 @@ public class AssignmentUpdateServlet extends HttpServlet {
     assignment.setTitle(req.getParameter("title"));
     assignment.setContent(req.getParameter("content"));
     assignment.setDeadline(Date.valueOf(req.getParameter("date")));
-   
+
     try {
       txManager.startTransaction();
       assignmentDao.update(assignment);

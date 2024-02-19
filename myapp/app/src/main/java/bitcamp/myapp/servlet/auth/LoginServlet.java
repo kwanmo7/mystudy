@@ -1,44 +1,33 @@
 package bitcamp.myapp.servlet.auth;
 
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/auth/login")
-public class LoginServlet extends GenericServlet {
+public class LoginServlet extends HttpServlet {
 
   MemberDao memberDao;
 
-  public LoginServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    this.memberDao = new MemberDaoImpl(connectionPool);
+  @Override
+  public void init() throws ServletException {
+    memberDao = (MemberDao) getServletContext().getAttribute("memberDao");
   }
 
   @Override
-  public void service(ServletRequest req, ServletResponse res)
+  protected void service(HttpServletRequest req, HttpServletResponse res)
       throws ServletException, IOException {
-
-    // 서블릿 컨테이너가 service()를 호출할 때 넘겨주는 값을
-    // HttpServletRequest와 HttpServletResponse이다.
-    HttpServletRequest request = (HttpServletRequest) req;
-    HttpServletResponse response = (HttpServletResponse) res;
 
     String email = req.getParameter("email");
     String password = req.getParameter("password");
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
+    res.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = res.getWriter();
     out.println("<!DOCTYPE html>");
     out.println("<html lang='en'>");
     out.println("<head>");
@@ -51,7 +40,7 @@ public class LoginServlet extends GenericServlet {
     try {
       Member member = memberDao.findByEmailAndPassword(email, password);
       if (member != null) {
-        request.getSession().setAttribute("loginUser", member);
+        req.getSession().setAttribute("loginUser", member);
         out.printf("<p>%s 님 환영합니다.</p>\n", member.getName());
       } else {
         out.println("<p>이메일 또는 암호가 맞지 않습니다.</p>");

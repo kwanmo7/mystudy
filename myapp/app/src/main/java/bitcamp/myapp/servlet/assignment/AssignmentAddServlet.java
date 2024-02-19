@@ -1,12 +1,8 @@
 package bitcamp.myapp.servlet.assignment;
 
-import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.Prompt;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,12 +19,10 @@ public class AssignmentAddServlet extends HttpServlet {
   private TransactionManager txManager;
   private AssignmentDao assignmentDao;
 
-  public AssignmentAddServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    this.txManager = new TransactionManager(connectionPool);
-    this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+  @Override
+  public void init() throws ServletException {
+    this.assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
+    this.txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
   }
 
   @Override
@@ -45,7 +39,7 @@ public class AssignmentAddServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>과제</h1>");
     Member member = (Member) req.getSession().getAttribute("loginUser");
-    if( member == null ){
+    if (member == null) {
       out.println("<p>로그인 하시기바랍니다.</p>");
       out.println("</body>");
       out.println("</html>");

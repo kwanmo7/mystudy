@@ -1,11 +1,7 @@
 package bitcamp.myapp.servlet.assignment;
 
-import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.Prompt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,12 +16,11 @@ public class AssignmentListServlet extends HttpServlet {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentListServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+  @Override
+  public void init() throws ServletException {
+    this.assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
   }
+
 
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse resp)
@@ -48,7 +43,8 @@ public class AssignmentListServlet extends HttpServlet {
       out.println("<tr><th>No</th><th>과제</th><th>제출마감일</th></tr>");
       out.println("</thead>");
       List<Assignment> list = assignmentDao.findAll();
-      list.forEach(item -> out.printf("<tr><td><a href='/assignment/view?no=%d'>%1$d</a></td> <td>%s</td> <td>%s</td></tr>\n",
+      list.forEach(item -> out.printf(
+          "<tr><td><a href='/assignment/view?no=%d'>%1$d</a></td> <td>%s</td> <td>%s</td></tr>\n",
           item.getNo(), item.getTitle(),
           item.getDeadline()));
       out.println("</tbody>");

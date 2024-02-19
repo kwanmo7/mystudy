@@ -8,6 +8,7 @@ public class Board implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
+  private int category;
   private int no;
   private String title;
   private String content;
@@ -15,7 +16,29 @@ public class Board implements Serializable {
   private Date createdDate;
   private int fileCount;
   private List<AttachedFile> files;
-  
+
+  @Override
+  public String toString() {
+    return "Board{" +
+        "category=" + category +
+        ", no=" + no +
+        ", title='" + title + '\'' +
+        ", content='" + content + '\'' +
+        ", writer=" + writer +
+        ", createdDate=" + createdDate +
+        ", fileCount=" + fileCount +
+        ", files=" + files +
+        '}';
+  }
+
+  public int getCategory() {
+    return category;
+  }
+
+  public void setCategory(int category) {
+    this.category = category;
+  }
+
   public int getNo() {
     return no;
   }

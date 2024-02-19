@@ -2,11 +2,8 @@ package bitcamp.myapp.servlet.board;
 
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,17 +18,17 @@ public class BoardFileDeleteServlet extends HttpServlet {
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
 
-  public BoardFileDeleteServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+  @Override
+  public void init() throws ServletException {
+    boardDao = (BoardDao) getServletContext().getAttribute("boardDao");
+    attachedFileDao = (AttachedFileDao) getServletContext().getAttribute("attachedFileDao");
   }
 
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+    int category = Integer.parseInt(req.getParameter("category"));
+    String title = category == 1 ? "게시글" : "가입인사";
     resp.setContentType("text/html;charset=UTF-8");
     PrintWriter out = resp.getWriter();
     out.println("<!DOCTYPE html>");
@@ -41,7 +38,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
     out.println("<title>비트캠프 DevOps 5</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.printf("<h1>%s</h1>\n", title);
     Member member = (Member) req.getSession().getAttribute("loginUser");
     if (member == null) {
       out.println("<p>로그인하시기 바랍니다</p>");
@@ -62,7 +59,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
       Member writer = boardDao.findBy(file.getBoardNo()).getWriter();
 
       if (writer.getNo() != member.getNo()) {
-        out.println("<p>게시글 권한이 없습니다.</p>");
+        out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;

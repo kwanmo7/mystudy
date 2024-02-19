@@ -1,16 +1,10 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
-import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,12 +17,10 @@ public class MemberUpdateServlet extends HttpServlet {
   private TransactionManager txManager;
   private MemberDao memberDao;
 
-  public MemberUpdateServlet() {
-    DBConnectionPool dbConnectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study",
-        "Bitcamp123!@#");
-    txManager = new TransactionManager(dbConnectionPool);
-    memberDao = new MemberDaoImpl(dbConnectionPool);
+  @Override
+  public void init() throws ServletException {
+    txManager = (TransactionManager) getServletContext().getAttribute("txManager");
+    memberDao = (MemberDao) getServletContext().getAttribute("memberDao");
   }
 
   @Override
@@ -53,7 +45,7 @@ public class MemberUpdateServlet extends HttpServlet {
       return;
     }
 
-    if(user.getNo() != Integer.parseInt(req.getParameter("no"))){
+    if (user.getNo() != Integer.parseInt(req.getParameter("no"))) {
       out.println("<p>변경 권한이 없습니다.</p>");
       out.println("</body>");
       out.println("</html>");
@@ -65,7 +57,7 @@ public class MemberUpdateServlet extends HttpServlet {
     member.setName(req.getParameter("name"));
     member.setEmail(req.getParameter("email"));
     member.setPassword(req.getParameter("password"));
-   
+
     try {
       txManager.startTransaction();
       memberDao.update(member);
