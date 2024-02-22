@@ -11,6 +11,9 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    // multopart/form-data 파일 업로드 처리
+    implementation 'commons-fileupload:commons-fileupload:1.5'
+    
     implementation libs.guava
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.85'
 }
