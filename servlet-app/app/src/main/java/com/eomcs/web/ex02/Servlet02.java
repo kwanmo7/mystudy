@@ -19,3 +19,5 @@ public class Servlet02 extends GenericServlet {
     System.out.println("/ex02/a/s2 서블릿 실행!");
   }
 }
+
+

@@ -20,74 +20,87 @@ public class BoardViewServlet extends HttpServlet {
   private AttachedFileDao attachedFileDao;
 
   @Override
-  public void init() throws ServletException {
-    boardDao = (BoardDao) getServletContext().getAttribute("boardDao");
-    attachedFileDao = (AttachedFileDao) getServletContext().getAttribute("attachedFileDao");
+  public void init() {
+    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
+    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
+        .getAttribute("attachedFileDao");
   }
 
   @Override
-  protected void service(HttpServletRequest req, HttpServletResponse resp)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    int category = Integer.parseInt(req.getParameter("category"));
-    String title = category == 1 ? "게시글" : "가입인사";
-    resp.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = resp.getWriter();
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>비트캠프 DevOps 5</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.printf("<h1>%s</h1>\n", title);
+
+    String title = "";
+
     try {
-      int no = Integer.parseInt(req.getParameter("no"));
+      int category = Integer.valueOf(request.getParameter("category"));
+      title = category == 1 ? "게시글" : "가입인사";
+
+      int no = Integer.parseInt(request.getParameter("no"));
       Board board = boardDao.findBy(no);
       if (board == null) {
-        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("번호가 유효하지 않습니다.");
       }
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
 
-      out.println("<form action='/board/update'>");
-      out.printf("<input name='category' type='text' value='%d'\n", category);
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      out.println("<!DOCTYPE html>");
+      out.println("<html lang='en'>");
+      out.println("<head>");
+      out.println("  <meta charset='UTF-8'>");
+      out.println("  <title>비트캠프 데브옵스 5기</title>");
+      out.println("</head>");
+      out.println("<body>");
+
+      request.getRequestDispatcher("/header").include(request, response);
+
+      out.printf("<h1>%s</h1>\n", title);
+      out.println("<form action='/board/update' method='post'>");
+      out.printf("<input name='category' type='hidden' value='%d'>\n", category);
       out.println("<div>");
-      out.printf("번호<input readonly name='no' type='text' value='%d'>\n", board.getNo());
+      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", board.getNo());
       out.println("</div>");
       out.println("<div>");
-      out.printf("제목<input name='title' type='text' value='%s'>\n", board.getTitle());
+      out.printf("  제목: <input name='title' type='text' value='%s'>\n", board.getTitle());
       out.println("</div>");
       out.println("<div>");
-      out.printf("내용<textarea name='content'>%s</textarea>\n", board.getContent());
+      out.printf("  내용: <textarea name='content'>%s</textarea>\n", board.getContent());
       out.println("</div>");
       out.println("<div>");
-      out.printf("작성자<input readonly type='text' value='%s'>\n", board.getWriter().getName());
+      out.printf("  작성자: <input readonly type='text' value='%s'>\n", board.getWriter().getName());
       out.println("</div>");
+
       if (category == 1) {
         out.println("<div>");
-        out.println("첨부파일<input multiple name='files' type='file'>");
-        out.println("<ul>");
-        files.forEach(
-            file -> out.printf("<li>%s <a href='/board/file/delete?category=%d&no=%d'>삭제</li>\n",
-                file.getFilePath(), category, file.getNo()));
-        out.println("</ul>");
+        out.println("  첨부파일: <input multiple name='files' type='file'>");
+        out.println("  <ul>");
+        for (AttachedFile file : files) {
+          out.printf("    <li>%s <a href='/board/file/delete?category=%d&no=%d'>삭제</a></li>\n",
+              file.getFilePath(),
+              category,
+              file.getNo());
+        }
+        out.println("  </ul>");
         out.println("</div>");
       }
+
       out.println("<div>");
-      out.println("<button>변경</button>");
-      out.printf("<a href='/board/delete?category=%d&no=%d'>[삭제]</a>\n", category, no);
+      out.println("  <button>변경</button>");
+      out.printf("  <a href='/board/delete?category=%d&no=%d'>[삭제]</a>\n", category, no);
       out.println("</div>");
       out.println("</form>");
 
+      request.getRequestDispatcher("/footer").include(request, response);
+
+      out.println("</body>");
+      out.println("</html>");
+
     } catch (Exception e) {
-      out.println("<p>조회 오류</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", String.format("%s 조회 오류!", title));
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }

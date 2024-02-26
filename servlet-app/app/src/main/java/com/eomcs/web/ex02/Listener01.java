@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebListener;
 // => 서블릿 컨테이너 또는 서블릿, 세션 등의 객체 상태가 변경되었을 때 보고 받는 옵저버
 // => "Observer" 디자인 패턴이 적용된 것이다.
 // => ServletContextListener
-//    - 웹 애플리케이션을 시작하거나 종료할 때 보고 받고 싶다면 이 인터페이스를 구현하라.
+//    - 서블릿 컨테이너를 시작하거나 종료할 때 보고 받고 싶다면 이 인터페이스를 구현하라.
 // => ServletRequestListener
 //    - 요청이 들어오거나 응답할 때 보고 받고 싶다면 이 인터페이스를 구현하라.
 // => HttpSessionListener
@@ -57,3 +57,9 @@ public class Listener01 implements ServletContextListener {
     System.out.println("Listener01.contextDestroyed()");
   }
 }
+
+
+
+
+
+

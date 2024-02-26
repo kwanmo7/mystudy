@@ -2,6 +2,8 @@ package com.eomcs.web;
 
 import java.io.IOException;
 import javax.servlet.GenericServlet;
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -15,4 +17,6 @@ public class HelloServlet2 extends GenericServlet {
       throws ServletException, IOException {
     System.out.println("Hello2!");
   }
+
 }
+

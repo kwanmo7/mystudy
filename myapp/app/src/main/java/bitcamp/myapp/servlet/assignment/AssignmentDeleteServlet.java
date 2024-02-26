@@ -1,10 +1,7 @@
 package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,52 +14,26 @@ public class AssignmentDeleteServlet extends HttpServlet {
   private AssignmentDao assignmentDao;
 
   @Override
-  public void init() throws ServletException {
-    this.assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
+  public void init() {
+    assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
   }
 
   @Override
-  protected void service(HttpServletRequest req, HttpServletResponse resp)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    resp.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = resp.getWriter();
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>비트캠프 DevOps 5</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>과제</h1>");
-    Member member = (Member) req.getSession().getAttribute("loginUser");
-    if (member == null) {
-      out.println("<p>로그인하시기 바랍니다</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
-    try {
-      int no = Integer.parseInt(req.getParameter("no"));
 
-      Assignment assignment = assignmentDao.findBy(no);
-      if (assignment == null) {
-        out.println("<p>과제 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+    try {
+      int no = Integer.parseInt(request.getParameter("no"));
+      if (assignmentDao.delete(no) == 0) {
+        throw new Exception("과제 번호가 유효하지 않습니다.");
       }
-      assignmentDao.delete(no);
-      out.println("<script>");
-      out.println("location.href= document.referrer;");
-      out.println("</script>");
+
+      response.sendRedirect("list");
 
     } catch (Exception e) {
-      out.println("삭제 오류");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "삭제 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }

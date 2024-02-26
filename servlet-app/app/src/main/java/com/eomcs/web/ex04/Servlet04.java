@@ -180,3 +180,6 @@ public class Servlet04 extends GenericServlet {
 //
 // 바이너리데이터...
 // ------WebKitFormBoundaryT1G23U6fYMK0zZxx--
+
+
+

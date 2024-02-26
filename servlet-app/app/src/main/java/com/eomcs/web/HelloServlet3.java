@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/hello3")
 public class HelloServlet3 extends HttpServlet {
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     System.out.println("Hello3!");
   }
+
 }
+

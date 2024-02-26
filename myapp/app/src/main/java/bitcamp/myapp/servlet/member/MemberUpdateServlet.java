@@ -2,78 +2,63 @@ package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.TransactionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.UUID;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/member/update")
 public class MemberUpdateServlet extends HttpServlet {
 
-  private TransactionManager txManager;
   private MemberDao memberDao;
+  private String uploadDir;
 
   @Override
-  public void init() throws ServletException {
-    txManager = (TransactionManager) getServletContext().getAttribute("txManager");
-    memberDao = (MemberDao) getServletContext().getAttribute("memberDao");
+  public void init() {
+    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
+    uploadDir = getServletContext().getRealPath("/upload");
   }
 
   @Override
-  public void service(HttpServletRequest req, HttpServletResponse resp)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    resp.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = resp.getWriter();
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>비트캠프 DevOps 5</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>회원</h1>");
-    Member user = (Member) req.getSession().getAttribute("loginUser");
-    if (user == null) {
-      out.println("<p>로그인하시기 바랍니다</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
-
-    if (user.getNo() != Integer.parseInt(req.getParameter("no"))) {
-      out.println("<p>변경 권한이 없습니다.</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
-
-    Member member = new Member();
-    member.setNo(Integer.parseInt(req.getParameter("no")));
-    member.setName(req.getParameter("name"));
-    member.setEmail(req.getParameter("email"));
-    member.setPassword(req.getParameter("password"));
-
     try {
-      txManager.startTransaction();
-      memberDao.update(member);
-      txManager.commit();
-      out.println("<p>회원 정보를 변경했습니다</p>");
-    } catch (Exception e) {
-      try {
-        txManager.rollback();
-      } catch (Exception e2) {
+      request.setCharacterEncoding("UTF-8");
+      int no = Integer.parseInt(request.getParameter("no"));
+      Member old = memberDao.findBy(no);
+      if (old == null) {
+        throw new Exception("회원 번호가 유효하지 않습니다.");
       }
-      out.println("<p>회원 변경 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+
+      Member member = new Member();
+      member.setNo(old.getNo());
+      member.setEmail(request.getParameter("email"));
+      member.setName(request.getParameter("name"));
+      member.setPassword(request.getParameter("password"));
+      member.setCreatedDate(old.getCreatedDate());
+
+      Part photoPart = request.getPart("photo");
+      if (photoPart.getSize() > 0) {
+        String filename = UUID.randomUUID().toString();
+        member.setPhoto(filename);
+        photoPart.write(uploadDir + "/" + filename);
+      } else {
+        member.setPhoto(old.getPhoto());
+      }
+
+      memberDao.update(member);
+      response.sendRedirect("list");
+
+    } catch (Exception e) {
+      request.setAttribute("message", "변경 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }

@@ -43,7 +43,7 @@ import javax.servlet.annotation.WebFilter;
 // - 클라이언트로 보낼 데이터를 압축하기
 // - 클라이언트로 보낼 데이터를 암호화시키기
 //
-@WebFilter("/ex02/*")
+//@WebFilter("/ex02/*")
 public class Filter01 implements Filter {
 
   @Override
@@ -55,7 +55,7 @@ public class Filter01 implements Filter {
     System.out.println("Filter01.init()");
   }
 
-//  @Override
+  @Override
   public void destroy() {
     // 웹 애플리케이션을 종료할 때 호출된다.
     // init()에서 준비한 자원을 해제한다.
@@ -85,3 +85,5 @@ public class Filter01 implements Filter {
     System.out.println("Filter01.doFilter() : 종료");
   }
 }
+
+

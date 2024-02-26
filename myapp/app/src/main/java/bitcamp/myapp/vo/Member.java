@@ -11,17 +11,8 @@ public class Member implements Serializable {
   private String email;
   private String name;
   private String password;
+  private String photo;
   private Date createdDate;
-
-  public static Member createFromCsv(String csv) {
-    String[] values = csv.split(",");
-    Member obj = new Member();
-    obj.setEmail(values[0]);
-    obj.setName(values[1]);
-    obj.setPassword(values[2]);
-    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
-    return obj;
-  }
 
   public int getNo() {
     return no;
@@ -63,12 +54,22 @@ public class Member implements Serializable {
     this.createdDate = createdDate;
   }
 
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+
   @Override
   public String toString() {
     return "Member{" +
-        "email='" + email + '\'' +
+        "no=" + no +
+        ", email='" + email + '\'' +
         ", name='" + name + '\'' +
         ", password='" + password + '\'' +
+        ", photo='" + photo + '\'' +
         ", createdDate=" + createdDate +
         '}';
   }

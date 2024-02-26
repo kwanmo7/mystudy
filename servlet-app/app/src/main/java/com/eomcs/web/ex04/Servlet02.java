@@ -49,6 +49,9 @@ public class Servlet02 extends GenericServlet {
     String age = req.getParameter("age");
     String name = req.getParameter("name");
 
+    System.out.println(name);
+    System.out.println(age);
+
     res.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = res.getWriter();
     out.printf("이름=%s\n", name);
@@ -221,3 +224,5 @@ public class Servlet02 extends GenericServlet {
 //      이런 상황에서는 POST 방식이 적절하지 않다.
 //      오히려 GET 방식이 적합하다.
 //
+
+

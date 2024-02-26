@@ -36,3 +36,5 @@ public class Servlet01 extends GenericServlet {
     out.println("مع السلامة؛ إلى اللقاء!");
   }
 }
+
+
