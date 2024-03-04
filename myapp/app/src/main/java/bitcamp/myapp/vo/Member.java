@@ -14,6 +14,26 @@ public class Member implements Serializable {
   private String photo;
   private Date createdDate;
 
+  @Override
+  public String toString() {
+    return "Member{" +
+        "no=" + no +
+        ", email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", password='" + password + '\'' +
+        ", photo='" + photo + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
+  }
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+
   public int getNo() {
     return no;
   }
@@ -52,25 +72,5 @@ public class Member implements Serializable {
 
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
-  }
-
-  public String getPhoto() {
-    return photo;
-  }
-
-  public void setPhoto(String photo) {
-    this.photo = photo;
-  }
-
-  @Override
-  public String toString() {
-    return "Member{" +
-        "no=" + no +
-        ", email='" + email + '\'' +
-        ", name='" + name + '\'' +
-        ", password='" + password + '\'' +
-        ", photo='" + photo + '\'' +
-        ", createdDate=" + createdDate +
-        '}';
   }
 }

@@ -12,7 +12,7 @@ public class TransactionManager {
 
   public void startTransaction() throws Exception {
     connectionPool.getConnection().setAutoCommit(false);
-    System.out.printf("[%s] Transaction Start\n", Thread.currentThread().getName());
+    System.out.printf("[%s] 트랜잭션 시작\n", Thread.currentThread().getName());
   }
 
   public void commit() throws Exception {
@@ -26,10 +26,9 @@ public class TransactionManager {
   }
 
   private void complete() throws Exception {
-    Connection connection = connectionPool.getConnection();
-    connection.setAutoCommit(true);
-    connection.close();
-    System.out.printf("[%s] Transaction End\n", Thread.currentThread().getName());
-
+    Connection con = connectionPool.getConnection();
+    con.setAutoCommit(true);
+    con.close();
+    System.out.printf("[%s] 트랜잭션 종료\n", Thread.currentThread().getName());
   }
 }

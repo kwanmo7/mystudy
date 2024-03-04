@@ -1,31 +1,29 @@
-<%@ page language="java"
-    contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    trimDirectiveWhitespaces="true"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-   <html lang='en'>
-   <head>
-     <meta charset='UTF-8'>
-     <title>비트캠프 데브옵스 5기</title>
-   </head>
-   <body>
-    <jsp:include page="/header.jsp"></jsp:include>
+<html lang='en'>
+  <head>
+  <meta charset='UTF-8'>
+  <title>비트캠프 데브옵스 5기</title>
+</head>
+<body>
 
-    <h1>로그인</h1>
+<jsp:include page="/header.jsp"></jsp:include>
 
-    <form action='/auth/login' method='post'>
-    <div>
-      이메일: <input name='email' type='text'
-      value='<%=request.getAttribute("email") != null ? request.getAttribute("email") : ""%>'>
-    </div>
-    <div>
-      암호: <input name='password' type='password'>
-    </div>
-    <button>로그인</button>
-    <input type='checkbox' name='saveEmail'>이메일 저장
-    </form>
+<h1>로그인</h1>
 
-    <jsp:include page="/footer.jsp"></jsp:include>
-    </body>
-    </html>
+<form action='/app/auth/login' method='post'>
+<div>
+    이메일: <input name='email' type='text'
+    value='${email}'>
+</div>
+<div>
+    암호: <input name='password' type='password'>
+</div>
+<button>로그인</button>
+<input type='checkbox' name='saveEmail'> 이메일 저장
+</form>
+
+<jsp:include page="/footer.jsp"></jsp:include>
+
+</body>
+</html>

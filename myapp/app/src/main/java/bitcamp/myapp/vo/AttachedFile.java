@@ -35,9 +35,8 @@ public class AttachedFile {
     return this;
   }
 
-  public AttachedFile setFile(int boardNo, String filePath) {
+  public AttachedFile boardNo(int boardNo) {
     this.boardNo = boardNo;
-    this.filePath = filePath;
     return this;
   }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public interface AssignmentDao {
 
-
   void add(Assignment assignment);
 
   int delete(int no);
