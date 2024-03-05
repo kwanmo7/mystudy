@@ -26,7 +26,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
     // DB 커넥션, DAO, 트랜잭션 관리자 생성
     DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
+        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp123!@#");
 
     AssignmentDao assignmentDao = new AssignmentDaoImpl(connectionPool);
     MemberDao memberDao = new MemberDaoImpl(connectionPool);
