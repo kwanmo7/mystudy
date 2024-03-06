@@ -8,37 +8,54 @@ import java.io.OutputStreamWriter;
 
 public class Main {
 
-  static int n;
-  static StringBuilder sb;
+  static char[][] arr; // 별을 찍을 이중배열
 
   public static void main(String[] args) throws NumberFormatException, IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    n = Integer.parseInt(br.readLine());
-    sb = new StringBuilder();
-    for (int i = 0; i < Math.pow(3, n); i++) {
-      sb.append("*");
+    int n = Integer.parseInt(br.readLine());
+    arr = new char[n][n];
+    calc(0, 0, n, false);
+
+    // 배열 출력
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        bw.write(arr[i][j]);
+      }
+      bw.newLine();
     }
-    System.out.println(sb);
-    System.out.println(calc(sb));
+    bw.flush();
   }
 
 
-  static String calc(StringBuilder sb) {
-    int n = (sb.length() / 3);
-    StringBuilder a = new StringBuilder();
-    a.append(sb.substring(0, n));
-    StringBuilder c = new StringBuilder();
-    c.append(sb.substring(n + n, sb.length()));
-    for (int i = n; i < n + n; i++) {
-      sb.replace(i, i + 1, " ");
+  static void calc(int x, int y, int n, boolean chk) {
+    if (chk) { // chk를 통해 공백을 찍어줌
+      for (int i = x; i < x + n; i++) {
+        for (int j = y; j < y + n; j++) {
+          arr[i][j] = ' ';
+        }
+      }
+      return;
     }
-    System.out.println(sb);
-    if (n % 3 == 0) {
-      sb.replace(0, n, calc(a));
-      sb.replace(n + n, sb.length(), calc(c));
+
+    if (n == 1) { // 별을 찍어줌
+      arr[x][y] = '*';
+      return;
     }
-    return sb.toString();
+
+    int size = n / 3;
+    int cnt = 0;
+    for (int i = x; i < x + n; i += size) {
+      for (int j = y; j < y + n; j += size) {
+        cnt++;
+        if (cnt == 5) { // true , false로 공백 찍는곳 호출, 다섯번째 마다 공백을 찍음
+          calc(i, j, size, true); // 공백이 들어가야할 곳에서 재귀호출로 공백 찍기
+        } else {
+          calc(i, j, size, false); // 별을 찍는부분 재귀호출
+        }
+      }
+    }
+    // 일렬로 먼저 찍는것이 아닌 3*3 사이즈 단위로 별을 찍음 , 그것을 위해 이중배열 사용
   }
 }
