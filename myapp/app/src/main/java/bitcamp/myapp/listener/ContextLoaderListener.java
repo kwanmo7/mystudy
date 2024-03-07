@@ -1,13 +1,11 @@
 package bitcamp.myapp.listener;
 
-import bitcamp.myapp.context.ApplicationContext;
-import bitcamp.util.DBConnectionPool;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
@@ -16,17 +14,9 @@ public class ContextLoaderListener implements ServletContextListener {
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     System.out.println("웹애플리케이션 자원 준비!");
-
-    // DB 커넥션, DAO, 트랜잭션 관리자 생성
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://db-ld2a3-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp123!@#");
-
-    Map<String, Object> beanMap = new HashMap<>();
-    beanMap.put("connectionPool", connectionPool);
-
     try {
       // 공유 객체를 보관할 ApplicationContext
-      ApplicationContext ctx = new ApplicationContext(beanMap, "bitcamp.myapp.dao", "bitcamp.util");
+      ApplicationContext ctx = new ClassPathXmlApplicationContext("config/application-context.xml");
 
       // 서블릿에서 사용할 수 있도록 웹애플리케이션 저장소에 보관한다.
       ServletContext 웹애플리케이션저장소 = sce.getServletContext();
