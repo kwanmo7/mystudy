@@ -3,12 +3,16 @@ package bitcamp.myapp.controller;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import java.util.Map;
+import javax.annotation.Nullable;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@Component
+@Controller
 public class AuthController {
 
   MemberDao memberDao;
@@ -18,7 +22,8 @@ public class AuthController {
   }
 
   @RequestMapping("/auth/form")
-  public String form(@CookieValue("email") String email, Map<String, Object> map) {
+  public String form(@CookieValue(value = "email", defaultValue = "") String email,
+      Map<String, Object> map) {
     map.put("email", email);
     return "/auth/form.jsp";
   }
@@ -27,7 +32,7 @@ public class AuthController {
   public String login(
       @RequestParam("email") String email,
       @RequestParam("password") String password,
-      @RequestParam("saveEmail") String saveEmail,
+      @Nullable @RequestParam("saveEmail") String saveEmail,
       HttpServletResponse response,
       HttpSession session) throws Exception {
     if (saveEmail != null) {
