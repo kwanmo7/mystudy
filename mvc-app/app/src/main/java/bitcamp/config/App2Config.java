@@ -1,10 +1,15 @@
 package bitcamp.config;
 
+import bitcamp.app2.Interceptor1;
+import bitcamp.app2.Interceptor2;
+import bitcamp.app2.Interceptor3;
+import bitcamp.app2.Interceptor4;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -66,5 +71,23 @@ public class App2Config implements WebMvcConfigurer {
 
     // DispatcherServlet의 MVC Path 관련 설정을 변경
     configurer.setUrlPathHelper(urlPathHelper);
+  }
+
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    // 인터셉터를 적용할 경로를 지정하지 않으면 모든 request handler에 대해 적용 됨
+    registry.addInterceptor(new Interceptor1());
+
+    
+    // /c04_1/ 바로 밑에 있는 것만 포함
+    // ex) /c04_1/a/1 <- 이런것은 불가
+    registry.addInterceptor(new Interceptor2()).addPathPatterns("/c04_1/*");
+    
+    // /c04_1/하위에 있는 모든 하위 경로를 포함
+    // ex) /c04_1/a/1 <- 포함
+    registry.addInterceptor(new Interceptor3()).addPathPatterns("/c04_1/**");
+
+    registry.addInterceptor(new Interceptor4()).addPathPatterns("/c04_1/**")
+            .excludePathPatterns("/c04_1/a/**");
   }
 }
