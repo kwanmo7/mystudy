@@ -1,16 +1,21 @@
 package bitcamp.myapp.config;
 
-import java.io.IOException;
-import java.io.InputStream;
+import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@EnableTransactionManagement
 @ComponentScan(value = {"bitcamp.myapp.dao"})
 @PropertySource({"classpath:config/jdbc.properties"})
 public class RootConfig {
@@ -22,12 +27,27 @@ public class RootConfig {
   }
 
   @Bean
-  public SqlSessionFactory sqlSessionFactory() throws IOException {
-    String resource = "config/mybatis-config.xml";
-    InputStream inputStream = Resources.getResourceAsStream(resource);
-    SqlSessionFactory sqlSessionFactory =
-        new SqlSessionFactoryBuilder().build(inputStream);
+  public PlatformTransactionManager transactionManager(DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+  }
 
-    return sqlSessionFactory;
+  @Bean
+  public DataSource dataSource(
+      @Value("${jdbc.url}") String url,
+      @Value("${jdbc.username}") String username,
+      @Value("${jdbc.password}") String password) {
+    return new DriverManagerDataSource(url, username, password);
+  }
+
+
+  @Bean
+  public SqlSessionFactory sqlSessionFactory(ApplicationContext context, DataSource dataSource)
+      throws Exception {
+    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+    sqlSessionFactoryBean.setTypeAliasesPackage("bitcamp.myapp.vo");
+    sqlSessionFactoryBean.setMapperLocations(context.getResources("classpath:mapper/*Mapper.xml"));
+    sqlSessionFactoryBean.setDataSource(dataSource);
+
+    return sqlSessionFactoryBean.getObject();
   }
 }

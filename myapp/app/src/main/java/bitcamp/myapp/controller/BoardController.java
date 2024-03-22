@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +42,7 @@ public class BoardController {
     model.addAttribute("category", category);
   }
 
+  @Transactional
   @PostMapping("add")
   public String add(
       Board board,
@@ -94,6 +96,7 @@ public class BoardController {
     model.addAttribute("category", category);
   }
 
+  @Transactional
   @GetMapping("delete")
   public String delete(
       int category,
@@ -154,6 +157,7 @@ public class BoardController {
   }
 
 
+  @Transactional
   @PostMapping("update")
   public String update(
       Board board,
