@@ -5,7 +5,6 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.TransactionManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +23,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/board")
 public class BoardController {
 
-  private TransactionManager txManager;
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-  public BoardController(TransactionManager txManager, BoardDao boardDao,
+  public BoardController(BoardDao boardDao,
       AttachedFileDao attachedFileDao, ServletContext sc) {
-    this.txManager = txManager;
     this.boardDao = boardDao;
     this.attachedFileDao = attachedFileDao;
     uploadDir = sc.getRealPath("/upload/board");
@@ -72,9 +69,6 @@ public class BoardController {
           files.add(new AttachedFile().filePath(filename));
         }
       }
-
-      txManager.startTransaction();
-
       boardDao.add(board);
 
       if (files.size() > 0) {
@@ -84,14 +78,9 @@ public class BoardController {
         attachedFileDao.addAll(files);
       }
 
-      txManager.commit();
       return "redirect:list";
 
     } catch (Exception e) {
-      try {
-        txManager.rollback();
-      } catch (Exception e2) {
-      }
       throw e;
     }
   }
@@ -125,10 +114,8 @@ public class BoardController {
 
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
 
-      txManager.startTransaction();
       attachedFileDao.deleteAll(no);
       boardDao.delete(no);
-      txManager.commit();
 
       for (AttachedFile file : files) {
         new File(this.uploadDir + "/" + file.getFilePath()).delete();
@@ -137,10 +124,6 @@ public class BoardController {
       return "redirect:list?category=" + category;
 
     } catch (Exception e) {
-      try {
-        txManager.rollback();
-      } catch (Exception e2) {
-      }
       throw e;
     }
   }
@@ -203,7 +186,6 @@ public class BoardController {
         }
       }
 
-      txManager.startTransaction();
       boardDao.update(board);
       if (files.size() > 0) {
         for (AttachedFile attachedFile : files) {
@@ -211,14 +193,9 @@ public class BoardController {
         }
         attachedFileDao.addAll(files);
       }
-      txManager.commit();
       return "redirect:list";
 
     } catch (Exception e) {
-      try {
-        txManager.rollback();
-      } catch (Exception e2) {
-      }
       throw e;
     }
   }
@@ -234,12 +211,8 @@ public class BoardController {
     if (board == null) {
       throw new Exception("번호가 유효하지 않습니다.");
     }
-
     model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     model.addAttribute("category", category);
     model.addAttribute("board", board);
-    if (category == 1) {
-      model.addAttribute("files", attachedFileDao.findAllByBoardNo(no));
-    }
   }
 }

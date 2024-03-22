@@ -26,12 +26,12 @@ public class GlobalControllerAdvice {
   public ModelAndView exceptionHandler(Exception e) {
     ModelAndView mv = new ModelAndView();
     mv.addObject("message", e.getMessage());
-    mv.setViewName("/error.jsp");
 
     StringWriter stringWriter = new StringWriter();
     PrintWriter out = new PrintWriter(stringWriter);
     e.printStackTrace(out);
     mv.addObject("detail", stringWriter.toString());
+    mv.setViewName("error");
 
     return mv;
   }

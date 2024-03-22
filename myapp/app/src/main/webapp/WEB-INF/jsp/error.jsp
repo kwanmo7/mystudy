@@ -18,7 +18,7 @@
 
 <c:if test="${not empty detail}">
   <pre>
-    ${detail}
+  ${detail}
   </pre>
 </c:if>
 

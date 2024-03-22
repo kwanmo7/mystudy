@@ -35,7 +35,7 @@ dependencies {
     //implementation 'org.springframework:spring-context:5.3.32'
 
     // log4j
-    implementation 'org.apache.logging.log4j:log4j:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
 
     // Spring Web MVC
     implementation 'org.springframework:spring-webmvc:5.3.32'
@@ -45,6 +45,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:32.1.1-jre'
+
+    // Mybatis
+    implementation 'org.mybatis:mybatis:3.5.15'
+
+    // Mybatis-Spring
+    implementation 'org.mybatis:mybatis-spring:3.0.3'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
