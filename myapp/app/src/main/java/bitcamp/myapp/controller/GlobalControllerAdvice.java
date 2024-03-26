@@ -30,10 +30,10 @@ public class GlobalControllerAdvice {
     StringWriter stringWriter = new StringWriter();
     PrintWriter out = new PrintWriter(stringWriter);
     e.printStackTrace(out);
-    mv.addObject("detail", stringWriter.toString());
-    mv.setViewName("error");
 
+    mv.addObject("detail", stringWriter.toString());
+
+    mv.setViewName("error");
     return mv;
   }
-
 }

@@ -15,7 +15,7 @@ public class AppWebApplicationInitializer extends
   private final Log log = LogFactory.getLog(this.getClass());
 
   public AppWebApplicationInitializer() {
-    log.debug("생성자 호출");
+    log.debug("생성자 호출됨!");
   }
 
   @Override
@@ -35,10 +35,13 @@ public class AppWebApplicationInitializer extends
 
   @Override
   protected void customizeRegistration(Dynamic registration) {
-    registration.setMultipartConfig(new MultipartConfigElement(new File("./temp").getAbsolutePath(),
+    registration.setMultipartConfig(new MultipartConfigElement(
+        new File("./temp").getAbsolutePath(),
+        //new File(System.getProperty("java.io.tmpdir")).getAbsolutePath(),
         1024 * 1024 * 10,
         1024 * 1024 * 100,
-        1024 * 1024));
+        1024 * 1024 * 1
+    ));
   }
 
   @Override

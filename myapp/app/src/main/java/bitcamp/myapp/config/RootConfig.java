@@ -5,6 +5,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -16,14 +17,15 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
-@ComponentScan(value = {"bitcamp.myapp.dao"})
+@MapperScan("bitcamp.myapp.dao")
+@ComponentScan({"bitcamp.myapp.dao", "bitcamp.myapp.service"})
 @PropertySource({"classpath:config/jdbc.properties"})
 public class RootConfig {
 
   private final Log log = LogFactory.getLog(this.getClass());
 
   public RootConfig() {
-    log.debug("생성자 호출됨");
+    log.debug("생성자 호출됨!");
   }
 
   @Bean
@@ -39,13 +41,13 @@ public class RootConfig {
     return new DriverManagerDataSource(url, username, password);
   }
 
-
   @Bean
-  public SqlSessionFactory sqlSessionFactory(ApplicationContext context, DataSource dataSource)
+
+  public SqlSessionFactory sqlSessionFactory(ApplicationContext ctx, DataSource dataSource)
       throws Exception {
     SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
     sqlSessionFactoryBean.setTypeAliasesPackage("bitcamp.myapp.vo");
-    sqlSessionFactoryBean.setMapperLocations(context.getResources("classpath:mapper/*Mapper.xml"));
+    sqlSessionFactoryBean.setMapperLocations(ctx.getResources("classpath:mapper/*Mapper.xml"));
     sqlSessionFactoryBean.setDataSource(dataSource);
 
     return sqlSessionFactoryBean.getObject();
