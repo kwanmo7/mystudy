@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/StorageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/NcpStorageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/config/ncp-secret.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/config/ncp.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/RootConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/config/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/StorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/NcpStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/NcpStorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/view.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,44 +97,44 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.QueueTest.executor": "Run",
-    "Application.StackTest.executor": "Run",
-    "Application.Test.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.myapp [buildDependents].executor": "Run",
-    "Gradle.myapp [buildNeeded].executor": "Run",
-    "Gradle.myapp [build].executor": "Run",
-    "Gradle.myapp [clean].executor": "Run",
-    "Gradle.myapp [run] (1).executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "Gradle.myapp:app [classes].executor": "Run",
-    "Gradle.myapp:app-api [build].executor": "Run",
-    "Gradle.myapp:app-client [build].executor": "Run",
-    "Gradle.myapp:app-client [run].executor": "Run",
-    "Gradle.myapp:app-common [build].executor": "Run",
-    "Gradle.myapp:app-server [build].executor": "Run",
-    "Gradle.myapp:app-server [clean].executor": "Run",
-    "Gradle.myapp:app-server [run].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp",
-    "last_opened_file_path": "C:/Users/User/git/mystudy/myapp/app/src/main/webapp/WEB-INF/templates",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.QueueTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run] (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-common [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/git/mystudy/myapp/app/src/main/webapp/WEB-INF/templates&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\git\mystudy\myapp\app\src\main\webapp\WEB-INF\templates" />
