@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>비트캠프 데브옵스 5기</title>
+</head>
+<body>
+
+<div data-th-replace="header :: header">header</div>
+
+<h1>과제</h1>
+
+<form action='/assignment/update' data-th-object="${assignment}" method='post'>
+  <div>
+    번호: <input data-th-value='*{no}' name='no' readonly type='text' value="no">
+  </div>
+  <div>
+    과제명: <input data-th-value='*{title}' name='title' type='text' value="title">
+  </div>
+  <div>
+    내용: <textarea data-th-text="*{content}" name='content'>content</textarea>
+  </div>
+  <div>
+    제출마감일: <input data-th-value='*{deadline}' name='deadline' type='date' value="deadline">
+  </div>
+  <div>
+    <button>변경</button>
+    <a data-th-href='@{/assignment/delete(no=*{no})}'>[삭제]</a>
+  </div>
+</form>
+
+<div data-th-replace="footer :: footer">hooter</div>
+
+</body>
+</html>
