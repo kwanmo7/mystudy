@@ -5,98 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120923b4-7f73-4e76-835c-f94abe1cecb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/myapp.app.test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/doc/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/AppWebApplicationInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/RootConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AboutController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AttachedFileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AttachedFileDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/config/ncp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/config/ncp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/log4j2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/mapper/AssignmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/AssignmentDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/mapper/AttachedFileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/AttachedFileDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/mapper/BoardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/BoardDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/MemberDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/about.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/assignment/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/assignment/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/assignment/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/auth/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/auth/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/board/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/board/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/board/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/error.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/member/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/member/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/member/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/assignment/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/assignment/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/assignment/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/auth/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/auth/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/auth/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/board/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/board/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/board/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/member/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/member/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/member/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/img/default-photo.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/static/img/default-photo.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/img/default-photo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/static/img/default-photo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/1b023da8-af58-42fe-ae47-ce1fec7006aa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/11e3f4d2-7019-4e92-a069-237077cf73bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/1275279d-663b-4a88-9ec4-23ab59391086" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/1803868a-fcb1-444e-adb4-6f76096e5e9d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/252accb2-7ce6-4722-b67d-32287bdfa02c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/26150a5c-6e6d-40cc-83f3-524c7be0b3be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/3421c0d2-c17e-47d2-94c2-ba708bf6bd39" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/358a6f42-c605-4598-8f7a-82a85342569f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/4b325e24-5cb5-4b22-bafd-5e823f36dc5a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/518477c9-992d-439c-baf4-e0a777514760" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/5c25be57-f9d1-4456-bf5c-1f39a75ae72a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/5d4fbe5e-a309-4ad5-baeb-51d31dfdf9f7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/5e705475-fb56-4d38-9ae3-dd9674406d43" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/6b6a70b7-4d46-43a1-89cd-c2bf151345e9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/6f54aa49-c5f2-4b43-ad12-88889975c3c3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/76bad8ed-14ed-4d51-b015-d676b2497107" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/7e4e526c-918d-4732-bb14-a8dde7eda233" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/8ac8d142-b6e5-42ab-94c6-ee1ef3bb53a1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/8cb6ba9b-fff9-4e55-908c-e63f54272b7f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/97523ba0-7781-41b4-a4bd-e3dab0f06ef4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/9c167810-c4c0-428a-ae23-6df1c27aafd0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/a88fedb2-2c89-4493-8446-bef1e49c0747" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/ab44dfe6-0d99-45d8-9ca9-c809188a62bd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/b8988545-7412-4f5f-b35b-3c08b611d380" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/cf92c7f5-5742-453c-a073-06ce90d5900f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/e48ba620-f140-46c5-8cf0-ed4d56738af9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/ed4f4e57-f824-4dce-a9e9-4f5e484f0187" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/f3dcebfe-b2d7-4466-bdb5-ccee01719140" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/f50163f1-66dc-467a-b86c-f04f84eb7900" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/mysql/AssignmentDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/mysql/AttachedFileDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/mysql/BoardDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/AssignmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/AssignmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultAssignmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultAssignmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultBoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultMemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/NcpStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/NcpStorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/AttachedFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/AttachedFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/AssignmentDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/AssignmentDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/BoardDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/BoardDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/MemberDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao/MemberDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/templates/assignment/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/assignment/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/board/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/templates/member/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/templates/member/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,45 +120,45 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.QueueTest.executor": "Run",
-    "Application.StackTest.executor": "Run",
-    "Application.Test.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Gradle.myapp [bootRun].executor": "Run",
-    "Gradle.myapp [buildDependents].executor": "Run",
-    "Gradle.myapp [buildNeeded].executor": "Run",
-    "Gradle.myapp [build].executor": "Run",
-    "Gradle.myapp [clean].executor": "Run",
-    "Gradle.myapp [run] (1).executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "Gradle.myapp:app [classes].executor": "Run",
-    "Gradle.myapp:app-api [build].executor": "Run",
-    "Gradle.myapp:app-client [build].executor": "Run",
-    "Gradle.myapp:app-client [run].executor": "Run",
-    "Gradle.myapp:app-common [build].executor": "Run",
-    "Gradle.myapp:app-server [build].executor": "Run",
-    "Gradle.myapp:app-server [clean].executor": "Run",
-    "Gradle.myapp:app-server [run].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp",
-    "last_opened_file_path": "C:/Users/User/git/mystudy/myapp/app/src/main/resources/bitcamp/myapp/dao",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.saveactions"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.QueueTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [bootRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run] (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-common [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/User/git/mystudy/myapp/app-server/src/main/java/bitcamp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/git/mystudy/myapp/app/src/main/resources/bitcamp/myapp/dao&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.saveactions&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\git\mystudy\myapp\app\src\main\resources\bitcamp\myapp\dao" />

@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-@EnableTransactionManagement
 @SpringBootApplication
+@EnableTransactionManagement
 @PropertySource({
     "classpath:config/ncp.properties",
-    "classpath:config/ncp-secret.properties"})
+    "classpath:config/ncp-secret.properties"
+})
+@Controller
 public class App {
 
   public static void main(String[] args) throws Exception {

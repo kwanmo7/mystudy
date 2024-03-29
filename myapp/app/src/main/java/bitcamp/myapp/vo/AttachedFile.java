@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor // Mybatis 에서 사용할 기본 생성자를 만들어야 함
-@AllArgsConstructor // 모든 field 값을 담을 생성자를 생성해 줌 , Builder를 사용할때 같이 사용해 줘야함
+@NoArgsConstructor // Mybatis 가 사용할 기본 생성자를 만들어야 한다.
+@AllArgsConstructor
 @Builder
 @Data
 public class AttachedFile {
