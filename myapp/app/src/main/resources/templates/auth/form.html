@@ -6,13 +6,14 @@
 </head>
 <body>
 
-<div data-th-replace="header :: header">header</div>
+<div data-th-replace="header :: header">머리말</div>
 
 <h1>로그인</h1>
 
 <form action="login" data-th-action="@{login}" method='post'>
   <div>
-    이메일: <input data-th-value='${email}' name='email' type='text' value="hong@test.com">
+    이메일: <input data-th-value='${email}' name='email' type='text'
+                value="hong@test.com">
   </div>
   <div>
     암호: <input name='password' type='password'>
@@ -21,7 +22,7 @@
   <input name='saveEmail' type='checkbox'> 이메일 저장
 </form>
 
-<div data-th-replace="footer :: footer">hooter</div>
+<div data-th-replace="footer :: footer">꼬리말</div>
 
 </body>
 </html>

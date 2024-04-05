@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<div data-th-replace="header :: header">header</div>
+<div data-th-replace="header :: header">머리말</div>
 
 <h1>과제</h1>
 
-<a data-th-href="@{form}" href="form">새 과제</a>
+<a data-th-href="@{/assignment/form}" href="form">새 과제</a>
 <table border='1'>
   <thead>
   <tr>
@@ -20,35 +20,34 @@
   </tr>
   </thead>
   <tbody>
-
   <tr data-th-each="assignment : ${list}" data-th-object="${assignment}">
-    <td data-th-text="*{no}">no</td>
+    <td data-th-text="*{no}">101</td>
     <td><a data-th-href="@{view(no=*{no})}"
-           data-th-text="*{title}" href="view.html">title</a>
+           data-th-text="*{title}"
+           href="view.html">자바 조건문
+      만들기</a>
     </td>
-    <td data-th-text="*{deadline}">deadline</td>
+    <td data-th-text="*{deadline}">2024-03-27</td>
   </tr>
-
   </tbody>
 </table>
 
 <p>
   [
   <a data-th-if="${pageNo <= 1}">이전</a>
-  <a data-th-href="@{list(pageNo=${pageNo-1},pageSize=${pageSize})}"
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo - 1},pageSize=${pageSize})}"
      data-th-if="${pageNo > 1}"
      href="list">이전</a>
   ]
-
   [
-  <a data-th-if="${pageNo >= page}">다음</a>
-  <a data-th-href="@{list(pageNo=${pageNo+1},pageSize=${pageSize})}"
-     data-th-if="${pageNo < page}"
+  <a data-th-if="${pageNo >= numOfPage}">다음</a>
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo + 1},pageSize=${pageSize})}"
+     data-th-if="${pageNo < numOfPage}"
      href="list">다음</a>
   ]
 </p>
 
-<div data-th-replace="footer :: footer">hooter</div>
+<div data-th-replace="footer :: footer">꼬리말</div>
 
 </body>
 </html>
