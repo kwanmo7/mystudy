@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex07</title>
+</head>
+<body>
+<h1>AJAX - jQuery 사용하기</h1>
+<form>
+<input type="text" id="a"> + <input type="text" id="b">
+<button type="button" id="btn1">=</button>
+<input type="text" id="r"><br>
+<button id="btn2" type="reset">초기화</button>
+</form>
+
+<script src="myQuery.js"></script>
+<script>
+"use strict"
+
+let a = $('#a');
+let b = $('#b');
+let r = $('#r');
+
+let btn1 = $('#btn1');
+let btn2 = $('#btn2');
+
+btn1.click(function(){
+	$.ajax({
+		url:'test4.jsp',
+		method:'post',
+		data: {a:$('#a').val(), b:$('#b').val()},
+		dataType: 'json',
+		success: function(response){
+			let result = JSON.parse(response);
+			console.log(result);
+		},
+		error: function(err){
+			alert('실행 오류');
+			console.log(err);
+		}
+	});
+});
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+

@@ -28,12 +28,18 @@ dependencies {
   // implementation 'org.springframework.boot:spring-boot-starter-undertow'
     
   // Thymeleaf 관련 라이브러리
-  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+  implementation 'javax.servlet:jstl:1.2'
+
+  implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.85'
 
   implementation 'org.apache.commons:commons-text:1.9'
+
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 }
 
 test {
